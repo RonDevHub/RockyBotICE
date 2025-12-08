@@ -1,4 +1,5 @@
 <?php
+
 use DreiBot\Utils;
 use DreiBot\Logger;
 
@@ -60,6 +61,7 @@ if (!$folge) {
     exit;
 }
 
+
 $titel = htmlspecialchars($folge['titel'] ?? 'Unbekannt');
 $nummer = $folge['nummer'] ?? '-';
 $cover = $folge['links']['cover'] ?? null;
@@ -73,7 +75,8 @@ $sekunden = floor($dauer / 1000);
 $stunden  = floor($sekunden / 3600);
 $minuten  = floor(($sekunden % 3600) / 60);
 
-function linkButton($name, $url, $svg) {
+function linkButton($name, $url, $svg)
+{
     if (!$url) return '';
     $safe = htmlspecialchars($url);
     return "<a href=\"$safe\" target=\"_blank\" class=\"link\">
@@ -98,109 +101,19 @@ $icons = [
 
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <title><?php echo $titel; ?> - Drei ???</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Die drei ??? übernehmen jeden Fall – und RockyBotICE übernimmt die tägliche Empfehlung.">
+    <meta name="keywords" content="drei ???, mastodon, mastodon bot, bot, die drei fragezeichen">
+    <link rel="canonical" href="https://rockybotice.rondev.de/">
     <link rel="icon" type="image/png" href="/public/favicon.png">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: system-ui, sans-serif;
-            background: radial-gradient(circle at top, #1a1a1a, #000);
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            border-radius: 20px;
-            padding: 2em;
-            max-width: 500px;
-            width: 90%;
-            box-shadow: 0 0 30px rgba(0,0,0,0.4);
-            text-align: center;
-        }
-        .card h1 {
-            font-size: 1.4em;
-            margin-bottom: 0.3em;
-        }
-        .card p.meta {
-            font-size: 0.9em;
-            color: #ccc;
-            margin-bottom: 1em;
-        }
-        .cover {
-            width: 100%;
-            border-radius: 10px;
-            margin-bottom: 1em;
-        }
-        .beschreibung {
-            font-size: 0.95em;
-            color: #ddd;
-            margin-bottom: 1.5em;
-            text-align: left;
-            white-space: pre-line;
-        }
-        .link {
-            display: flex;
-            align-items: center;
-            gap: 0.6em;
-            background: rgba(255,255,255,0.1);
-            padding: 0.6em 1em;
-            margin: 0.4em 0;
-            border-radius: 10px;
-            text-decoration: none;
-            color: #fff;
-            transition: background 0.2s ease;
-        }
-        .link:hover {
-            background: rgba(255,255,255,0.2);
-        }
-        .icon svg {
-            vertical-align: middle;
-        }
-        .label {
-            flex: 1;
-            text-align: left;
-        }
-        .back {
-            margin-top: 2em;
-            font-size: 0.8em;
-            color: #aaa;
-        }
-        .back a {
-            color: #aaa;
-            text-decoration: underline;
-        }
-        .badge {
-            display: inline-block;
-            padding: 0.3em 0.7em;
-            border-radius: 999px;
-            font-size: 0.75em;
-            font-weight: bold;
-            color: #fff;
-            margin-bottom: 1em;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        @media (max-width: 600px) {
-            .card {
-                padding: 1.2em;
-            }
-            .card h1 {
-                font-size: 1.2em;
-            }
-            .beschreibung {
-                font-size: 0.9em;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="/public/assets/style.css">
 </head>
+<?php require_once __DIR__ . '/../public/_modals.php'; ?>
+
 <body>
     <div class="card">
         <h1><?php echo $titel; ?></h1>
@@ -223,22 +136,39 @@ $icons = [
         <?php endif; ?>
 
         <?php
-            echo linkButton('Spotify', $links['spotify'] ?? null, $icons['Spotify']);
-            echo linkButton('Deezer', $links['deezer'] ?? null, $icons['Deezer']);
-            echo linkButton('Apple Music', $links['appleMusic'] ?? null, $icons['Apple Music']);
-            echo linkButton('Amazon Music', $links['amazonMusic'] ?? null, $icons['Amazon Music']);
-            echo linkButton('YouTube Music', $links['youTubeMusic'] ?? null, $icons['YouTube Music']);
-            echo linkButton('BookBeat', $links['bookbeat'] ?? null, $icons['BookBeat']);
-            echo linkButton('Produktseite', $links['dreifragezeichen'] ?? null, $icons['Produktseite']);
+        echo linkButton('Spotify', $links['spotify'] ?? null, $icons['Spotify']);
+        echo linkButton('Deezer', $links['deezer'] ?? null, $icons['Deezer']);
+        echo linkButton('Apple Music', $links['appleMusic'] ?? null, $icons['Apple Music']);
+        echo linkButton('Amazon Music', $links['amazonMusic'] ?? null, $icons['Amazon Music']);
+        echo linkButton('YouTube Music', $links['youTubeMusic'] ?? null, $icons['YouTube Music']);
+        echo linkButton('BookBeat', $links['bookbeat'] ?? null, $icons['BookBeat']);
+        echo linkButton('Produktseite', $links['dreifragezeichen'] ?? null, $icons['Produktseite']);
         ?>
 
         <div class="back">
-            <a href="<?php echo htmlspecialchars($config['base_url']); ?>">Zurück zur Startseite</a>
+            <a href="<?php echo htmlspecialchars($config['base_url']); ?>" style="margin-right: 20px;"><svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 640 512">
+                    <path style="fill:#f3f4f7;opacity:.4" d="M48 96c0 85.4 0 170.7 0 256 .1 26.6 21.5 48 48 48l43.3 0c10.4-36.9 44.4-64 84.7-64s74.2 27.1 84.7 64l27.3 0 0-232c0-22.1 17.9-40 40-40l48 0c22.1 0 40 17.9 40 40l0 232 64 0 0-240c0-61.9-50.1-112-112-112L96 48C69.5 48 48 69.5 48 96zm80 72c0-22.1 17.9-40 40-40l48 0c22.1 0 40 17.9 40 40l0 48c0 22.1-17.9 40-40 40l-48 0c-22.1 0-40-17.9-40-40l0-48z" />
+                    <path style="fill:#f3f4f7;opacity:1" d="M96 48C69.5 48 48 69.5 48 96l0 256c0 26.5 21.5 48 48 48l43.3 0c10.4-36.9 44.4-64 84.7-64s74.2 27.1 84.7 64l27.3 0 0-232c0-22.1 17.9-40 40-40l48 0c22.1 0 40 17.9 40 40l0 232 64 0 0-240c0-61.9-50.1-112-112-112L96 48zm40.4 368L96 416c-35.3 0-64-28.7-64-64L32 96c0-35.3 28.7-64 64-64l320 0c70.7 0 128 57.3 128 128l0 240 88 0c4.4 0 8 3.6 8 8s-3.6 8-8 8l-320.4 0c.2 2.6 .4 5.3 .4 8 0 48.6-39.4 88-88 88s-88-39.4-88-88c0-2.7 .1-5.4 .4-8zM352 400l96 0 0-128-40 0c-4.4 0-8-3.6-8-8s3.6-8 8-8l40 0 0-88c0-13.3-10.7-24-24-24l-48 0c-13.3 0-24 10.7-24 24l0 232zM216 144l-48 0c-13.3 0-24 10.7-24 24l0 48c0 13.3 10.7 24 24 24l48 0c13.3 0 24-10.7 24-24l0-48c0-13.3-10.7-24-24-24zm-48-16l48 0c22.1 0 40 17.9 40 40l0 48c0 22.1-17.9 40-40 40l-48 0c-22.1 0-40-17.9-40-40l0-48c0-22.1 17.9-40 40-40zm56 368a72 72 0 1 0 0-144 72 72 0 1 0 0 144z" />
+                </svg></a>
+            <a href="#" data-modal="donateModal" target="_blank" style="margin-right: 20px;"><svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 576 512">
+                    <path style="fill:#ff0000;opacity:.4" d="M.5 148.8c7.1 80.9 85.5 149.2 158.1 197.1-10.4-28.5-15.9-59-13.1-90.7 7.1-81.3 78.8-141.5 160.2-134.4 28 2.5 54.3 12.8 76.2 29.3 1.7-11.5 2.2-23.1 1.2-34.7-4.8-54.9-53.2-95.6-108.2-90.8-31.9 2.8-60.6 20.7-77 48.2l-9.8 16.5-12.6-14.5c-21-24.2-52.3-36.9-84.2-34.1-54.9 4.8-95.6 53.2-90.8 108.2z" />
+                    <path style="fill:#ff0000;opacity:1" d="M301.5 168.6c31.9 2.8 60.6 20.7 77 48.2l9.8 16.5 12.6-14.5c21-24.2 52.3-36.9 84.2-34.1 54.9 4.8 95.6 53.2 90.8 108.2-8.9 102.2-131.7 184.3-212.9 230.5-72-59.5-178.6-161.7-169.6-263.9 4.8-54.9 53.2-95.6 108.2-90.8z" />
+                </svg></a>
+            <a href="#" data-modal="contactModal" target="_blank" style="margin-right: 20px;"><svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 512 512">
+                    <path style="fill:var(--fa-secondary-color,currentColor);opacity:var(--fa-secondary-opacity,.4)" d="M32 122.5c0 8.4 4 16.4 10.8 21.4L227.6 279.3c16.9 12.4 39.9 12.4 56.8 0L469.2 143.8c6.8-5 10.8-12.9 10.8-21.4 0-14.6-11.9-26.5-26.5-26.5l-395 0C43.9 96 32 107.9 32 122.5zm0 53.1L32 384c0 17.7 14.3 32 32 32l384 0c17.7 0 32-14.3 32-32l0-208.4-176.7 129.6c-28.2 20.6-66.5 20.6-94.6 0L32 175.6z" />
+                    <path style="fill:var(--fa-primary-color,currentColor);opacity:var(--fa-primary-opacity,1)" d="M0 122.5l0-2.5 .1 0C1.3 88.9 27 64 58.5 64l395 0c31.5 0 57.1 24.9 58.4 56l.1 0 0 264c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 122.5zm480 53.1L303.3 305.1c-28.2 20.6-66.5 20.6-94.6 0L32 175.6 32 384c0 17.7 14.3 32 32 32l384 0c17.7 0 32-14.3 32-32l0-208.4zm0-53.1c0-14.6-11.9-26.5-26.5-26.5l-395 0c-14.6 0-26.5 11.9-26.5 26.5 0 8.4 4 16.4 10.8 21.4L227.6 279.3c16.9 12.4 39.9 12.4 56.8 0L469.2 143.8c6.8-5 10.8-12.9 10.8-21.4z" />
+                </svg></a>
+            <a href="#" data-modal="infoModal" target="_blank" style="margin-right: 20px;"><svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 512 512">
+                    <path style="fill:var(--fa-secondary-color,currentColor);opacity:var(--fa-secondary-opacity,.4)" d="M16 256a240 240 0 1 0 480 0 240 240 0 1 0 -480 0zm184-40c0-4.4 3.6-8 8-8l48 0c4.4 0 8 3.6 8 8l0 136 40 0c4.4 0 8 3.6 8 8s-3.6 8-8 8l-96 0c-4.4 0-8-3.6-8-8s3.6-8 8-8l40 0 0-128-40 0c-4.4 0-8-3.6-8-8zm72-56a16 16 0 1 1 -32 0 16 16 0 1 1 32 0z" />
+                    <path style="fill:var(--fa-primary-color,currentColor);opacity:var(--fa-primary-opacity,1)" d="M256 16a240 240 0 1 1 0 480 240 240 0 1 1 0-480zm0 496a256 256 0 1 0 0-512 256 256 0 1 0 0 512zM208 352c-4.4 0-8 3.6-8 8s3.6 8 8 8l96 0c4.4 0 8-3.6 8-8s-3.6-8-8-8l-40 0 0-136c0-4.4-3.6-8-8-8l-48 0c-4.4 0-8 3.6-8 8s3.6 8 8 8l40 0 0 128-40 0zm48-176a16 16 0 1 0 0-32 16 16 0 1 0 0 32z" />
+                </svg></a>
         </div>
         <div class="footer">
-           <?php echo date("Y"); ?> - <?php echo htmlspecialchars($config['botname']); ?><br>
-           <small><strong>Die drei ??? übernehmen jeden Fall - und <?php echo htmlspecialchars($config['botname']); ?> übernimmt die tägliche Empfehlung.</strong></small>
+            &copy; <?php echo date("Y"); ?> - <a href="<?php echo htmlspecialchars($config['base_url']); ?>"><?php echo htmlspecialchars($config['botname']); ?></a><br>
+            <strong>Die drei ??? übernehmen jeden Fall - und <?php echo htmlspecialchars($config['botname']); ?> übernimmt die tägliche Empfehlung.</strong>
         </div>
     </div>
 </body>
+<script src="/public/assets/scripts.js"></script>
+
 </html>
