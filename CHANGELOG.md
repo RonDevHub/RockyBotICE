@@ -1,3 +1,5 @@
 ## Changelog
 
-- Erscheinungsdatum und die Länge der Folge wurde hinzugefügt und wird nun auf der Folgeseite angezeigt
+- Design Anpassungen für Index Seite
+- public/assets Ordner hinzugefügt und CSS ausgelagert
+- Modals hinzugefügt, können beliebig erweitert werden
