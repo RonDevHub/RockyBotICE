@@ -76,4 +76,4 @@ Bei Verwendung genügt als Namensnennung "RockyBotICE".
 Sämtlicher Quellcode steht unter der [MIT License](https://opensource.org/license/MIT).
 
 ## 📣 Kontakt
-Fragen, Ideen oder Nerdliebe? Melde dich auf [**Matrix Chat**](https://matrix.to/#/#RockyBotICE:matrix.s3cr.net), [**Github Issues**](https://github.com/RonDevHub/RockyBotICE/issues), <a href="https://mastodon.social/@herrstoeckchen">@herrstoeckchen</a>, <a rel="me" href="https://mastodon.social/@RockyBotICE">@RockyBotICE</a> *(kein Support)*
+Fragen, Ideen oder Nerdliebe? Melde dich auf [**Matrix Chat**](https://matrix.to/#/#RockyBotICE:matrix.s3cr.net), [**Github Issues**](https://github.com/RonDevHub/RockyBotICE/issues), <a href="https://mastodon.social/@herrstoeckchen">**@herrstoeckchen**</a>, <a rel="me" href="https://mastodon.social/@RockyBotICE">**@RockyBotICE**</a> *(kein Support)*
