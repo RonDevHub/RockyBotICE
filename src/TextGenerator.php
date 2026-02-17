@@ -1,13 +1,16 @@
 <?php
+
 namespace DreiBot;
 
 require_once __DIR__ . '/Logger.php';
 
-class TextGenerator {
+class TextGenerator
+{
     private array $texts;
     private array $config;
 
-    public function __construct(array $config) {
+    public function __construct(array $config)
+    {
         $this->config = $config;
         $path = $config['templates_path'] . 'texts.json';
         if (!file_exists($path)) {
@@ -26,7 +29,8 @@ class TextGenerator {
         $this->texts = $json;
     }
 
-    public function generateText(array $folge): string {
+    public function generateText(array $folge): string
+    {
         if (empty($this->texts)) {
             return "Heute gibt es Folge: " . ($folge['titel'] ?? 'Unbekannt');
         }
@@ -43,9 +47,90 @@ class TextGenerator {
             '{id}'        => $folge['ids']['dreimetadaten'] ?? '',
         ];
 
+        // Dynamische Hashtags
+        $dynamischeHashtags = [];
+
+        // Typ-Hashtags 
+        if (!empty($folge['typ'])) {
+            $typTag = '#' . preg_replace('/[^A-Za-z0-9]/', '', $folge['typ']);
+            $dynamischeHashtags[] = $typTag;
+        }
+
+        // Erscheinungsjahr (falls vorhanden) 
+        if (!empty($folge['veröffentlichungsdatum'])) {
+            $jahr = substr($folge['veröffentlichungsdatum'], 0, 4);
+            if (ctype_digit($jahr)) {
+                $dynamischeHashtags[] = '#Jahr' . $jahr;
+            }
+        }
+
+        // Folgenummer (z. B. #Folge123)
+        if (!empty($folge['nummer'])) {
+            $nummer = preg_replace('/[^0-9]/', '', $folge['nummer']);
+            if ($nummer !== '') {
+                $dynamischeHashtags[] = '#Folge' . $nummer;
+            }
+        }
+
+        // Autoren-Hashtags (Initiale + Nachname, max. 3)
+        if (!empty($folge['autor'])) {
+
+            // Autor kann String oder Array sein
+            $autoren = is_array($folge['autor'])
+                ? $folge['autor']
+                : [$folge['autor']];
+
+            $initialenTags = [];
+            $count = 0;
+
+            foreach ($autoren as $au) {
+
+                // Split nach Komma, "und", "&", "/", "|"
+                $parts = preg_split('/,| und | & |\/|\|/i', $au);
+
+                foreach ($parts as $name) {
+                    $name = trim($name);
+                    if ($name === '') continue;
+
+                    // Maximal 3 Autoren
+                    if ($count >= 3) break 2;
+
+                    // Namen in Teile splitten (Vorname, evtl. Mittelname, Nachname)
+                    $nameParts = preg_split('/\s+|-/', $name);
+
+                    if (count($nameParts) >= 2) {
+                        // Vorname → Initiale
+                        $vorname = $nameParts[0];
+                        $initial = strtoupper(substr($vorname, 0, 1));
+
+                        // Nachname = letzter Teil (Henkel-Waidhofer → HenkelWaidhofer)
+                        $nachname = implode('', array_slice($nameParts, 1));
+                        $nachnameClean = preg_replace('/[^A-Za-z0-9]/', '', $nachname);
+
+                        $initialenTags[] = "#{$initial}{$nachnameClean}";
+                    } else {
+                        // Falls nur ein Name vorhanden ist
+                        $clean = preg_replace('/[^A-Za-z0-9]/', '', $name);
+                        $initialenTags[] = "#{$clean}";
+                    }
+
+                    $count++;
+                }
+            }
+
+            $dynamischeHashtags = array_merge($dynamischeHashtags, $initialenTags);
+        }
+
+
+        // Basis-Hashtags aus config.php 
+        $basisTags = $this->config['hashtags'] ?? [];
+
+        // Alles zusammenführen 
+        $alleTags = array_unique(array_merge($basisTags, $dynamischeHashtags));
+        $hashtags = implode(' ', $alleTags);
+
         $text = str_replace(array_keys($platzhalter), array_values($platzhalter), $template);
         $link = $this->config['base_url'] . 'folge' . ($folge['ids']['dreimetadaten'] ?? '');
-        $hashtags = implode(' ', $this->config['hashtags'] ?? []);
 
         return $text . "\n\n🔗 " . $link . "\n\n" . $hashtags;
     }
