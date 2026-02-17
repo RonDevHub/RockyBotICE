@@ -47,25 +47,58 @@ class TextGenerator
             '{id}'        => $folge['ids']['dreimetadaten'] ?? '',
         ];
 
+        // Typ automatisch bestimmen, falls nicht vorhanden
+        if (empty($folge['typ']) && !empty($folge['ids']['dreimetadaten'])) {
+
+            // Datei → Typ Mapping
+            $typMap = [
+                'Serie.json'           => 'Serie',
+                'Spezial.json'         => 'Spezial',
+                'Kurzgeschichten.json' => 'Kurzgeschichte'
+            ];
+
+            // Herausfinden, aus welcher Datei die Folge stammt
+            foreach ($typMap as $file => $typName) {
+                $path = $this->config['data_path'] . $file;
+
+                if (file_exists($path)) {
+                    $json = json_decode(file_get_contents($path), true);
+
+                    // Schlüssel im JSON bestimmen
+                    $key = strtolower(pathinfo($file, PATHINFO_FILENAME)); // serie, spezial, kurzgeschichten
+
+                    $list = $json[$key] ?? [];
+
+                    foreach ($list as $f) {
+                        if (($f['ids']['dreimetadaten'] ?? null) == ($folge['ids']['dreimetadaten'] ?? null)) {
+                            $folge['typ'] = $typName;
+                            break 2;
+                        }
+                    }
+                }
+            }
+        }
+
         // Dynamische Hashtags
         $dynamischeHashtags = [];
+        $dyn = $this->config['dynamic_hashtags'] ?? [];
 
-        // Typ-Hashtags 
-        if (!empty($folge['typ'])) {
+        // Typ-Hashtag
+        if (($dyn['typ'] ?? false) && !empty($folge['typ'])) {
             $typTag = '#' . preg_replace('/[^A-Za-z0-9]/', '', $folge['typ']);
             $dynamischeHashtags[] = $typTag;
         }
 
-        // Erscheinungsjahr (falls vorhanden) 
-        if (!empty($folge['veröffentlichungsdatum'])) {
+        // Erscheinungsjahr
+        if (($dyn['jahr'] ?? false) && !empty($folge['veröffentlichungsdatum'])) {
             $jahr = substr($folge['veröffentlichungsdatum'], 0, 4);
             if (ctype_digit($jahr)) {
                 $dynamischeHashtags[] = '#Jahr' . $jahr;
             }
         }
 
-        // Folgenummer (z. B. #Folge123)
-        if (!empty($folge['nummer'])) {
+        // Folgenummer
+        if (($dyn['nummer'] ?? false) && !empty($folge['nummer'])) {
             $nummer = preg_replace('/[^0-9]/', '', $folge['nummer']);
             if ($nummer !== '') {
                 $dynamischeHashtags[] = '#Folge' . $nummer;
@@ -73,9 +106,8 @@ class TextGenerator
         }
 
         // Autoren-Hashtags (Initiale + Nachname, max. 3)
-        if (!empty($folge['autor'])) {
+        if (($dyn['autor'] ?? false) && !empty($folge['autor'])) {
 
-            // Autor kann String oder Array sein
             $autoren = is_array($folge['autor'])
                 ? $folge['autor']
                 : [$folge['autor']];
@@ -92,24 +124,20 @@ class TextGenerator
                     $name = trim($name);
                     if ($name === '') continue;
 
-                    // Maximal 3 Autoren
                     if ($count >= 3) break 2;
 
-                    // Namen in Teile splitten (Vorname, evtl. Mittelname, Nachname)
+                    // Namen in Teile splitten
                     $nameParts = preg_split('/\s+|-/', $name);
 
                     if (count($nameParts) >= 2) {
-                        // Vorname → Initiale
                         $vorname = $nameParts[0];
                         $initial = strtoupper(substr($vorname, 0, 1));
 
-                        // Nachname = letzter Teil (Henkel-Waidhofer → HenkelWaidhofer)
                         $nachname = implode('', array_slice($nameParts, 1));
                         $nachnameClean = preg_replace('/[^A-Za-z0-9]/', '', $nachname);
 
                         $initialenTags[] = "#{$initial}{$nachnameClean}";
                     } else {
-                        // Falls nur ein Name vorhanden ist
                         $clean = preg_replace('/[^A-Za-z0-9]/', '', $name);
                         $initialenTags[] = "#{$clean}";
                     }
@@ -121,13 +149,13 @@ class TextGenerator
             $dynamischeHashtags = array_merge($dynamischeHashtags, $initialenTags);
         }
 
-
-        // Basis-Hashtags aus config.php 
+        // Basis-Hashtags aus config.php
         $basisTags = $this->config['hashtags'] ?? [];
 
-        // Alles zusammenführen 
+        // Zusammenführen
         $alleTags = array_unique(array_merge($basisTags, $dynamischeHashtags));
         $hashtags = implode(' ', $alleTags);
+
 
         $text = str_replace(array_keys($platzhalter), array_values($platzhalter), $template);
         $link = $this->config['base_url'] . 'folge' . ($folge['ids']['dreimetadaten'] ?? '');
