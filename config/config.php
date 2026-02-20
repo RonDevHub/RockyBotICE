@@ -8,6 +8,13 @@ return [
     'botname' => 'RockyBot21',
     'base_url' => 'https://deinedomain.de/',
     'hashtags' => ['#Hashtag1', '#Hashtag2'], // oder [], für keine Hashtags
+    // Dynamische Hashtags - true: anzeigen, false: nicht anzeigen
+    'dynamic_hashtags' => [ 
+        'typ' => true, 
+        'jahr' => true, 
+        'nummer' => true, 
+        'autor' => true, 
+    ],
 
     // Testmodus: true = kein echter Toot, nur Log
     'testmode' => true,
