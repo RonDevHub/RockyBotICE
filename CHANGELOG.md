@@ -1,5 +1,4 @@
 ## Changelog
 
-- Design Anpassungen für Index Seite
-- public/assets Ordner hinzugefügt und CSS ausgelagert
-- Modals hinzugefügt, können beliebig erweitert werden
+- Dynamische Hashtags: *Erscheinungsjahr, Folgenummer und Autoren (Anfangsbuchstabe Vorname, voller Nachname)*
+- Dynamische Hashtags können nun einzeln in der config.php aktiviert/deaktiviert werden
