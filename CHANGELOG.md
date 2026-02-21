@@ -1,4 +1,5 @@
 ## Changelog
 
-- Dynamische Hashtags: *Erscheinungsjahr, Folgenummer und Autoren (Anfangsbuchstabe Vorname, voller Nachname)*
-- Dynamische Hashtags können nun einzeln in der config.php aktiviert/deaktiviert werden
+
+### Bugfix
+- Fehler behoben, dass die Cover nur per `http://` eingebunden werden, wie in der JSON vorgegeben. Nun wird geprüft, ob Cover als `https://` oder  `http://` in JSON vorliegt und `https://` erzwungen.
