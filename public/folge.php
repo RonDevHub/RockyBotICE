@@ -75,6 +75,11 @@ $sekunden = floor($dauer / 1000);
 $stunden  = floor($sekunden / 3600);
 $minuten  = floor(($sekunden % 3600) / 60);
 
+// Wandelt http:// in https:// um
+if (strpos($cover, "http://") === 0) {
+    $cover = "https://" . substr($cover, 7);
+}
+
 function linkButton($name, $url, $svg)
 {
     if (!$url) return '';
