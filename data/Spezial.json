@@ -1,7 +1,7 @@
 {
   "dbInfo" : {
-    "version" : "2.8.14",
-    "lastModified" : "2026-02-25T12:16:25Z"
+    "version" : "2.9.1",
+    "lastModified" : "2026-03-13T20:01:44Z"
   },
   "spezial" : [
     {
@@ -489,6 +489,7 @@
       "links" : {
         "json" : "http://dreimetadaten.de/data/Spezial/und-der-Super-Papagei-2004/metadata.json",
         "ffmetadata" : "http://dreimetadaten.de/data/Spezial/und-der-Super-Papagei-2004/ffmetadata.txt",
+        "artwork" : "http://dreimetadaten.de/data/Spezial/und-der-Super-Papagei-2004/artwork.webp",
         "cover" : "http://dreimetadaten.de/data/Spezial/und-der-Super-Papagei-2004/cover.png",
         "cover_itunes" : "http://a1.mzstatic.com/r40/Music49/v4/c8/5e/27/c85e2753-96d6-5361-5fcd-62c30788f409/886445749311.jpg",
         "dreifragezeichen" : "https://dreifragezeichen.de/produktwelt/details/super-papagei-2004",
@@ -951,6 +952,7 @@
       ],
       "links" : {
         "json" : "http://dreimetadaten.de/data/Spezial/und-der-dreiTag/metadata.json",
+        "artwork" : "http://dreimetadaten.de/data/Spezial/und-der-dreiTag/artwork.webp",
         "cover" : "http://dreimetadaten.de/data/Spezial/und-der-dreiTag/cover.png",
         "cover_itunes" : "http://a1.mzstatic.com/r40/Music49/v4/9a/dd/ec/9addece3-1886-3728-fd48-67a93c04e5f0/886445749281.jpg",
         "dreifragezeichen" : "https://dreifragezeichen.de/produktwelt/details/und-der-dreitag",
@@ -1365,6 +1367,7 @@
           "links" : {
             "json" : "http://dreimetadaten.de/data/Spezial/und-der-dreiTag/1/metadata.json",
             "ffmetadata" : "http://dreimetadaten.de/data/Spezial/und-der-dreiTag/1/ffmetadata.txt",
+            "artwork" : "http://dreimetadaten.de/data/Spezial/und-der-dreiTag/1/artwork.webp",
             "cover" : "http://dreimetadaten.de/data/Spezial/und-der-dreiTag/1/cover.png"
           },
           "ids" : {
@@ -1536,6 +1539,7 @@
           "links" : {
             "json" : "http://dreimetadaten.de/data/Spezial/und-der-dreiTag/2/metadata.json",
             "ffmetadata" : "http://dreimetadaten.de/data/Spezial/und-der-dreiTag/2/ffmetadata.txt",
+            "artwork" : "http://dreimetadaten.de/data/Spezial/und-der-dreiTag/2/artwork.webp",
             "cover" : "http://dreimetadaten.de/data/Spezial/und-der-dreiTag/2/cover.png"
           },
           "ids" : {
@@ -1758,6 +1762,7 @@
           "links" : {
             "json" : "http://dreimetadaten.de/data/Spezial/und-der-dreiTag/3/metadata.json",
             "ffmetadata" : "http://dreimetadaten.de/data/Spezial/und-der-dreiTag/3/ffmetadata.txt",
+            "artwork" : "http://dreimetadaten.de/data/Spezial/und-der-dreiTag/3/artwork.webp",
             "cover" : "http://dreimetadaten.de/data/Spezial/und-der-dreiTag/3/cover.png"
           },
           "ids" : {
@@ -1936,6 +1941,7 @@
       "links" : {
         "json" : "http://dreimetadaten.de/data/Spezial/Brainwash-Gefangene-Gedanken/metadata.json",
         "ffmetadata" : "http://dreimetadaten.de/data/Spezial/Brainwash-Gefangene-Gedanken/ffmetadata.txt",
+        "artwork" : "http://dreimetadaten.de/data/Spezial/Brainwash-Gefangene-Gedanken/artwork.webp",
         "cover" : "http://dreimetadaten.de/data/Spezial/Brainwash-Gefangene-Gedanken/cover.png",
         "cover_itunes" : "http://a1.mzstatic.com/r40/Music49/v4/b9/f2/a8/b9f2a801-34a1-4d5d-c745-5ef921fba6cb/886445749403.jpg",
         "dreifragezeichen" : "https://dreifragezeichen.de/produktwelt/details/brainwash",
@@ -2455,6 +2461,7 @@
       "links" : {
         "json" : "http://dreimetadaten.de/data/Spezial/House-of-Horrors-Haus-der-Angst/metadata.json",
         "ffmetadata" : "http://dreimetadaten.de/data/Spezial/House-of-Horrors-Haus-der-Angst/ffmetadata.txt",
+        "artwork" : "http://dreimetadaten.de/data/Spezial/House-of-Horrors-Haus-der-Angst/artwork.webp",
         "cover" : "http://dreimetadaten.de/data/Spezial/House-of-Horrors-Haus-der-Angst/cover.png",
         "cover_itunes" : "http://a1.mzstatic.com/r40/Music114/v4/87/73/89/877389c8-2c6a-c40c-7bf1-b3498a8678fb/884977708189.jpg",
         "dreifragezeichen" : "https://dreifragezeichen.de/produktwelt/details/house-of-horrors",
@@ -3027,6 +3034,7 @@
       "links" : {
         "json" : "http://dreimetadaten.de/data/Spezial/High-Strung-Unter-Hochspannung/metadata.json",
         "ffmetadata" : "http://dreimetadaten.de/data/Spezial/High-Strung-Unter-Hochspannung/ffmetadata.txt",
+        "artwork" : "http://dreimetadaten.de/data/Spezial/High-Strung-Unter-Hochspannung/artwork.webp",
         "cover" : "http://dreimetadaten.de/data/Spezial/High-Strung-Unter-Hochspannung/cover.png",
         "cover_itunes" : "http://a1.mzstatic.com/r40/Music49/v4/30/a3/5b/30a35bd3-ae05-4a15-cd1b-674753aee0e2/886445749465.jpg",
         "dreifragezeichen" : "https://dreifragezeichen.de/produktwelt/details/high-strung",
@@ -3296,6 +3304,7 @@
       "links" : {
         "json" : "http://dreimetadaten.de/data/Spezial/und-der-5-Advent/metadata.json",
         "ffmetadata" : "http://dreimetadaten.de/data/Spezial/und-der-5-Advent/ffmetadata.txt",
+        "artwork" : "http://dreimetadaten.de/data/Spezial/und-der-5-Advent/artwork.webp",
         "cover" : "http://dreimetadaten.de/data/Spezial/und-der-5-Advent/cover.png",
         "cover_itunes" : "http://a1.mzstatic.com/r40/Music71/v4/96/1c/ed/961ced16-8515-10f4-6a56-02a2bc5bc285/886446100562.jpg",
         "dreifragezeichen" : "https://dreifragezeichen.de/produktwelt/details/der-5-advent",
@@ -3662,6 +3671,7 @@
       "links" : {
         "json" : "http://dreimetadaten.de/data/Spezial/Stille-Nacht-duestere-Nacht/metadata.json",
         "ffmetadata" : "http://dreimetadaten.de/data/Spezial/Stille-Nacht-duestere-Nacht/ffmetadata.txt",
+        "artwork" : "http://dreimetadaten.de/data/Spezial/Stille-Nacht-duestere-Nacht/artwork.webp",
         "cover" : "http://dreimetadaten.de/data/Spezial/Stille-Nacht-duestere-Nacht/cover.png",
         "cover_itunes" : "http://a1.mzstatic.com/r40/Music118/v4/05/41/31/05413108-b81c-9d3b-b874-3d9ce5a4f8f7/886446100609.jpg",
         "dreifragezeichen" : "https://dreifragezeichen.de/produktwelt/details/adventskalender-stille-nacht-dustere-nacht",
@@ -4017,6 +4027,7 @@
       "links" : {
         "json" : "http://dreimetadaten.de/data/Spezial/O-du-finstere/metadata.json",
         "ffmetadata" : "http://dreimetadaten.de/data/Spezial/O-du-finstere/ffmetadata.txt",
+        "artwork" : "http://dreimetadaten.de/data/Spezial/O-du-finstere/artwork.webp",
         "cover" : "http://dreimetadaten.de/data/Spezial/O-du-finstere/cover.png",
         "cover_itunes" : "http://a1.mzstatic.com/r40/Music124/v4/ea/13/9b/ea139be5-bf25-69b9-42db-7d77c8e27c35/886447878439.jpg",
         "dreifragezeichen" : "https://dreifragezeichen.de/produktwelt/details/o-du-finstere",
@@ -4438,6 +4449,7 @@
       "links" : {
         "json" : "http://dreimetadaten.de/data/Spezial/Eine-schreckliche-Bescherung/metadata.json",
         "ffmetadata" : "http://dreimetadaten.de/data/Spezial/Eine-schreckliche-Bescherung/ffmetadata.txt",
+        "artwork" : "http://dreimetadaten.de/data/Spezial/Eine-schreckliche-Bescherung/artwork.webp",
         "cover" : "http://dreimetadaten.de/data/Spezial/Eine-schreckliche-Bescherung/cover.png",
         "cover_itunes" : "http://a1.mzstatic.com/r40/Music122/v4/d6/bf/a6/d6bfa640-de36-a2cb-3790-74a9e1ce511b/886449413263.jpg",
         "appleMusic" : "https://music.apple.com/de/album/1695696461",
@@ -4800,6 +4812,7 @@
       "links" : {
         "json" : "http://dreimetadaten.de/data/Spezial/Boeser-die-Glocken-nie-klingen/metadata.json",
         "ffmetadata" : "http://dreimetadaten.de/data/Spezial/Boeser-die-Glocken-nie-klingen/ffmetadata.txt",
+        "artwork" : "http://dreimetadaten.de/data/Spezial/Boeser-die-Glocken-nie-klingen/artwork.webp",
         "cover" : "http://dreimetadaten.de/data/Spezial/Boeser-die-Glocken-nie-klingen/cover.png",
         "cover_itunes" : "http://a1.mzstatic.com/r40/Music126/v4/3b/22/be/3b22befa-c875-e76b-b8a1-ff5d5122d062/196871057332.jpg",
         "dreifragezeichen" : "https://dreifragezeichen.de/produktwelt/details/boser-die-glocken-nie-klingen-adventskalender",
@@ -5160,11 +5173,13 @@
       "links" : {
         "json" : "http://dreimetadaten.de/data/Spezial/Gruselige-Weihnacht-ueberall/metadata.json",
         "ffmetadata" : "http://dreimetadaten.de/data/Spezial/Gruselige-Weihnacht-ueberall/ffmetadata.txt",
+        "artwork" : "http://dreimetadaten.de/data/Spezial/Gruselige-Weihnacht-ueberall/artwork.webp",
         "cover" : "http://dreimetadaten.de/data/Spezial/Gruselige-Weihnacht-ueberall/cover.png",
         "cover_itunes" : "http://a1.mzstatic.com/r40/Music211/v4/e9/d1/b3/e9d1b30f-bbc4-3904-2ed5-b54d4a6b79f0/196872231823.jpg",
         "dreifragezeichen" : "https://www.dreifragezeichen.de/produktwelt/details/gruselige-weihnacht-uberall-1",
         "appleMusic" : "https://music.apple.com/de/album/1843382938",
         "spotify" : "https://open.spotify.com/intl-de/album/0PLjPVDHMsLP0tF1Zt6uvx",
+        "bookbeat" : "https://www.bookbeat.com/de/book/1756787",
         "amazonMusic" : "https://music.amazon.de/albums/B0FTGG1KW7",
         "amazon" : "https://www.amazon.de/gp/product/B0FKQFRSV1",
         "youTubeMusic" : "https://music.youtube.com/browse/MPREb_nDkC3TrkRYT",
@@ -5174,6 +5189,7 @@
         "dreimetadaten" : 427,
         "appleMusic" : "1843382938",
         "spotify" : "0PLjPVDHMsLP0tF1Zt6uvx",
+        "bookbeat" : "1756787",
         "amazonMusic" : "B0FTGG1KW7",
         "amazon" : "B0FKQFRSV1",
         "youTubeMusic" : "MPREb_nDkC3TrkRYT",
@@ -5486,6 +5502,7 @@
       "links" : {
         "json" : "http://dreimetadaten.de/data/Spezial/Das-Grab-der-Inka-Mumie/metadata.json",
         "ffmetadata" : "http://dreimetadaten.de/data/Spezial/Das-Grab-der-Inka-Mumie/ffmetadata.txt",
+        "artwork" : "http://dreimetadaten.de/data/Spezial/Das-Grab-der-Inka-Mumie/artwork.webp",
         "cover" : "http://dreimetadaten.de/data/Spezial/Das-Grab-der-Inka-Mumie/cover.png",
         "cover_itunes" : "http://a1.mzstatic.com/r40/Music124/v4/ee/4e/3e/ee4e3e55-9e99-6e6c-b30b-a3c08f0d04e9/886444438483.jpg",
         "dreifragezeichen" : "https://dreifragezeichen.de/produktwelt/details/das-grab-der-inka-mumie",
@@ -5720,6 +5737,7 @@
       "links" : {
         "json" : "http://dreimetadaten.de/data/Spezial/und-der-Tornadojaeger/metadata.json",
         "ffmetadata" : "http://dreimetadaten.de/data/Spezial/und-der-Tornadojaeger/ffmetadata.txt",
+        "artwork" : "http://dreimetadaten.de/data/Spezial/und-der-Tornadojaeger/artwork.webp",
         "cover" : "http://dreimetadaten.de/data/Spezial/und-der-Tornadojaeger/cover.png",
         "cover_itunes" : "http://a1.mzstatic.com/r40/Music127/v4/5c/bd/e2/5cbde282-7308-b942-a2d6-e7fd717b9f47/886444438681.jpg",
         "dreifragezeichen" : "https://dreifragezeichen.de/produktwelt/details/und-der-tornadojager",
@@ -5989,6 +6007,7 @@
       "links" : {
         "json" : "http://dreimetadaten.de/data/Spezial/und-das-kalte-Auge/metadata.json",
         "ffmetadata" : "http://dreimetadaten.de/data/Spezial/und-das-kalte-Auge/ffmetadata.txt",
+        "artwork" : "http://dreimetadaten.de/data/Spezial/und-das-kalte-Auge/artwork.webp",
         "cover" : "http://dreimetadaten.de/data/Spezial/und-das-kalte-Auge/cover.png",
         "cover_itunes" : "http://a1.mzstatic.com/r40/Music128/v4/af/f8/9a/aff89a25-8c32-e047-08e0-5b55e66187ae/886444438667.jpg",
         "dreifragezeichen" : "https://dreifragezeichen.de/produktwelt/details/und-das-kalte-auge",
@@ -6253,6 +6272,7 @@
       "links" : {
         "json" : "http://dreimetadaten.de/data/Spezial/und-die-schwarze-Katze/metadata.json",
         "ffmetadata" : "http://dreimetadaten.de/data/Spezial/und-die-schwarze-Katze/ffmetadata.txt",
+        "artwork" : "http://dreimetadaten.de/data/Spezial/und-die-schwarze-Katze/artwork.webp",
         "cover" : "http://dreimetadaten.de/data/Spezial/und-die-schwarze-Katze/cover.png",
         "cover_itunes" : "http://a1.mzstatic.com/r40/Music124/v4/0a/a9/1c/0aa91c6a-4119-4d0a-b039-7019411de671/886447191804.jpg",
         "dreifragezeichen" : "https://dreifragezeichen.de/produktwelt/details/und-die-schwarze-katze-neufassung",
@@ -6517,6 +6537,7 @@
       "links" : {
         "json" : "http://dreimetadaten.de/data/Spezial/und-das-versunkene-Schiff/metadata.json",
         "ffmetadata" : "http://dreimetadaten.de/data/Spezial/und-das-versunkene-Schiff/ffmetadata.txt",
+        "artwork" : "http://dreimetadaten.de/data/Spezial/und-das-versunkene-Schiff/artwork.webp",
         "cover" : "http://dreimetadaten.de/data/Spezial/und-das-versunkene-Schiff/cover.png",
         "cover_itunes" : "http://a1.mzstatic.com/r40/Music125/v4/29/80/09/29800971-253c-1a01-fce6-9080236cee2e/886447335307.jpg",
         "dreifragezeichen" : "https://dreifragezeichen.de/produktwelt/details/die-drei-und-das-versunkene-schiff",
@@ -6777,6 +6798,7 @@
       "links" : {
         "json" : "http://dreimetadaten.de/data/Spezial/und-der-dreiaeugige-Totenkopf/metadata.json",
         "ffmetadata" : "http://dreimetadaten.de/data/Spezial/und-der-dreiaeugige-Totenkopf/ffmetadata.txt",
+        "artwork" : "http://dreimetadaten.de/data/Spezial/und-der-dreiaeugige-Totenkopf/artwork.webp",
         "cover" : "http://dreimetadaten.de/data/Spezial/und-der-dreiaeugige-Totenkopf/cover.png",
         "cover_itunes" : "http://a1.mzstatic.com/r40/Music123/v4/26/93/df/2693df4e-9555-a979-a62e-80a70c845c84/886447878415.jpg",
         "dreifragezeichen" : "https://dreifragezeichen.de/produktwelt/details/und-der-dreiaugige-totenkopf",
@@ -7037,6 +7059,7 @@
       "links" : {
         "json" : "http://dreimetadaten.de/data/Spezial/und-das-Grab-der-Maya/metadata.json",
         "ffmetadata" : "http://dreimetadaten.de/data/Spezial/und-das-Grab-der-Maya/ffmetadata.txt",
+        "artwork" : "http://dreimetadaten.de/data/Spezial/und-das-Grab-der-Maya/artwork.webp",
         "cover" : "http://dreimetadaten.de/data/Spezial/und-das-Grab-der-Maya/cover.png",
         "cover_itunes" : "http://a1.mzstatic.com/r40/Music124/v4/80/ac/b8/80acb833-cbf8-6f17-a96a-fc6e02553e42/886448741374.jpg",
         "appleMusic" : "https://music.apple.com/de/album/1535920186",
@@ -7306,11 +7329,13 @@
       "links" : {
         "json" : "http://dreimetadaten.de/data/Spezial/Das-Dorf-der-Teufel/metadata.json",
         "ffmetadata" : "http://dreimetadaten.de/data/Spezial/Das-Dorf-der-Teufel/ffmetadata.txt",
+        "artwork" : "http://dreimetadaten.de/data/Spezial/Das-Dorf-der-Teufel/artwork.webp",
         "cover" : "http://dreimetadaten.de/data/Spezial/Das-Dorf-der-Teufel/cover.png",
         "cover_itunes" : "http://a1.mzstatic.com/r40/Music211/v4/3b/5c/ee/3b5cee45-a7da-dc1f-4575-2e79ceda0816/196873391359.jpg",
         "dreifragezeichen" : "https://www.dreifragezeichen.de/produktwelt/details/das-dorf-der-teufel",
         "appleMusic" : "https://music.apple.com/de/album/1837170319",
         "spotify" : "https://open.spotify.com/intl-de/album/09pBOlMa7AxGh1JbdXmrgc",
+        "bookbeat" : "https://www.bookbeat.com/de/book/1725291",
         "amazonMusic" : "https://music.amazon.de/albums/B0FPGBYC26",
         "amazon" : "https://www.amazon.de/gp/product/B0FNBYTNVV",
         "youTubeMusic" : "https://music.youtube.com/browse/MPREb_fmtwhGAUimZ",
@@ -7320,6 +7345,7 @@
         "dreimetadaten" : 422,
         "appleMusic" : "1837170319",
         "spotify" : "09pBOlMa7AxGh1JbdXmrgc",
+        "bookbeat" : "1725291",
         "amazonMusic" : "B0FPGBYC26",
         "amazon" : "B0FNBYTNVV",
         "youTubeMusic" : "MPREb_fmtwhGAUimZ",
@@ -7395,6 +7421,262 @@
             }
           ],
           "ripLog" : "http://dreimetadaten.de/data/Spezial/Das-Dorf-der-Teufel/rip_log2.txt"
+        }
+      ]
+    },
+    {
+      "titel" : "und die singende Schlange",
+      "autor" : "M. V. Carey",
+      "hörspielskriptautor" : "André Minninger",
+      "gesamtbeschreibung" : "Zugegeben, Mrs. Patricia Osborne ist eine etwas seltsame Dame. Ihrer Nichte Allie geht sie damit auf die Nerven, dass sie behauptet, Spinnweben seien hervorragende Heilkräuter.\nSie erzählt Allie, dass sie abends vor dem Schlafengehen mit einem Messer einen Kreis um ihr Bett zieht, um sich vor drohendem Unheil zu schützen. Außerdem lädt sie nachts zu geheimnisvollen Zusammenkünften ein.\nAllie bittet deshalb die drei ???, diesen Rätseln auf den Grund zu gehen. Unsere Detektive schleichen sich bei Mrs. Osborne ein und beobachten schauerliche Dinge. Was sie wohl gesehen haben?",
+      "beschreibung" : "Zugegeben, Mrs. Patricia Osborne ist eine etwas seltsame Dame. Ihrer Nichte Allie geht sie damit auf die Nerven, dass sie behauptet, Spinnweben seien hervorragende Heilkräuter.\nSie erzählt Allie, dass sie abends vor dem Schlafengehen mit einem Messer einen Kreis um ihr Bett zieht, um sich vor drohendem Unheil zu schützen. Außerdem lädt sie nachts zu geheimnisvollen Zusammenkünften ein.\nAllie bittet deshalb die drei ???, diesen Rätseln auf den Grund zu gehen. Unsere Detektive schleichen sich bei Mrs. Osborne ein und beobachten schauerliche Dinge. Was sie wohl gesehen haben?",
+      "veröffentlichungsdatum" : "2026-03-13",
+      "gesamtdauer" : 5419374,
+      "kapitel" : [
+        {
+          "titel" : "Das Mädchen auf der Schimmelstute",
+          "start" : 0,
+          "end" : 349467
+        },
+        {
+          "titel" : "Zuflucht bei Nacht",
+          "start" : 349467,
+          "end" : 646813
+        },
+        {
+          "titel" : "Die singende Schlange",
+          "start" : 646813,
+          "end" : 1265653
+        },
+        {
+          "titel" : "Hinter der Mauer",
+          "start" : 1265653,
+          "end" : 1759853
+        },
+        {
+          "titel" : "Ein Opfer der Schlange",
+          "start" : 1759853,
+          "end" : 2374520
+        },
+        {
+          "titel" : "Die goldene Kobra",
+          "start" : 2374520,
+          "end" : 2865387
+        },
+        {
+          "titel" : "Die Diamanten der Kaiserin",
+          "start" : 2865387,
+          "end" : 3171520
+        },
+        {
+          "titel" : "Dr. Shaitans Geister",
+          "start" : 3171520,
+          "end" : 3834454
+        },
+        {
+          "titel" : "Tante Patricia in Bedrängnis",
+          "start" : 3834454,
+          "end" : 4283560
+        },
+        {
+          "titel" : "Ein Opfer der Angst",
+          "start" : 4283560,
+          "end" : 4679147
+        },
+        {
+          "titel" : "Maras weiße Magie",
+          "start" : 4679147,
+          "end" : 5059027
+        },
+        {
+          "titel" : "Schluss mit der Schlangenbeschwörung",
+          "start" : 5059027,
+          "end" : 5419374
+        }
+      ],
+      "sprechrollen" : [
+        {
+          "rolle" : "Erzähler",
+          "sprecher" : "Axel Milberg"
+        },
+        {
+          "rolle" : "Justus Jonas, Erster Detektiv",
+          "sprecher" : "Oliver Rohrbeck"
+        },
+        {
+          "rolle" : "Peter Shaw, Zweiter Detektiv",
+          "sprecher" : "Jens Wawrczeck"
+        },
+        {
+          "rolle" : "Bob Andrews, Recherchen und Archiv",
+          "sprecher" : "Andreas Fröhlich"
+        },
+        {
+          "rolle" : "Tante Mathilda",
+          "sprecher" : "Karin Lieneweg"
+        },
+        {
+          "rolle" : "Onkel Titus",
+          "sprecher" : "Rüdiger Schulzki"
+        },
+        {
+          "rolle" : "Allie Jamison",
+          "sprecher" : "Katrin Fröhlich"
+        },
+        {
+          "rolle" : "Marie",
+          "sprecher" : "Susanne Wulkow"
+        },
+        {
+          "rolle" : "Patricia Osborne",
+          "sprecher" : "Barbara Focke"
+        },
+        {
+          "rolle" : "Madelyn Enderby",
+          "sprecher" : "Caroline Kiesewetter"
+        },
+        {
+          "rolle" : "Noxworth",
+          "sprecher" : "Mario Ramos"
+        },
+        {
+          "rolle" : "Asmodi",
+          "sprecher" : "Hanns-Jörg Krumpholz"
+        },
+        {
+          "rolle" : "Wache",
+          "sprecher" : "Wolfgang Kaven"
+        },
+        {
+          "rolle" : "Morton",
+          "sprecher" : "Michael Prelle"
+        },
+        {
+          "rolle" : "Hendricks",
+          "sprecher" : "André Beyer"
+        },
+        {
+          "rolle" : "Landstreicher",
+          "sprecher" : "Jürgen Thormann"
+        },
+        {
+          "rolle" : "Mara",
+          "sprecher" : "Katja Brügger"
+        },
+        {
+          "rolle" : "Dr. Shaitan",
+          "sprecher" : "Tim Grobe"
+        },
+        {
+          "rolle" : "Barrister/Bentley",
+          "sprecher" : "Douglas Welbat"
+        },
+        {
+          "rolle" : "TV-Sprecher",
+          "sprecher" : "Roman Rossa"
+        },
+        {
+          "rolle" : "Mrs. Compton",
+          "sprecher" : "Heidi Schaffrath"
+        },
+        {
+          "rolle" : "Krankenschwester",
+          "sprecher" : "Sarah Madeleine Tusk"
+        }
+      ],
+      "links" : {
+        "json" : "http://dreimetadaten.de/data/Spezial/und-die-singende-Schlange/metadata.json",
+        "ffmetadata" : "http://dreimetadaten.de/data/Spezial/und-die-singende-Schlange/ffmetadata.txt",
+        "artwork" : "http://dreimetadaten.de/data/Spezial/und-die-singende-Schlange/artwork.webp",
+        "cover" : "http://dreimetadaten.de/data/Spezial/und-die-singende-Schlange/cover.png",
+        "cover_itunes" : "http://a1.mzstatic.com/r40/Music221/v4/42/e9/eb/42e9eb75-5234-c506-87ae-a4cdaf98a5ec/196873459097.jpg",
+        "dreifragezeichen" : "https://www.dreifragezeichen.de/produktwelt/details/die-singende-schlange-planetarium-special",
+        "appleMusic" : "https://music.apple.com/de/album/1860827440",
+        "spotify" : "https://open.spotify.com/intl-de/album/7pkVk9UgZBBcc2D2ySHaRM",
+        "amazonMusic" : "https://music.amazon.de/albums/B0G6L23M9X",
+        "amazon" : "https://www.amazon.de/gp/product/B0FR7S9WLT",
+        "youTubeMusic" : "https://music.youtube.com/browse/MPREb_sbw29j0PYZG",
+        "deezer" : "https://www.deezer.com/de/album/875916842"
+      },
+      "ids" : {
+        "dreimetadaten" : 434,
+        "appleMusic" : "1860827440",
+        "spotify" : "7pkVk9UgZBBcc2D2ySHaRM",
+        "amazonMusic" : "B0G6L23M9X",
+        "amazon" : "B0FR7S9WLT",
+        "youTubeMusic" : "MPREb_sbw29j0PYZG",
+        "deezer" : "875916842"
+      },
+      "medien" : [
+        {
+          "tracks" : [
+            {
+              "titel" : "Das Mädchen auf der Schimmelstute",
+              "start" : 0,
+              "end" : 349467
+            },
+            {
+              "titel" : "Zuflucht bei Nacht",
+              "start" : 349467,
+              "end" : 646813
+            },
+            {
+              "titel" : "Die singende Schlange",
+              "start" : 646813,
+              "end" : 1265653
+            },
+            {
+              "titel" : "Hinter der Mauer",
+              "start" : 1265653,
+              "end" : 1759853
+            },
+            {
+              "titel" : "Ein Opfer der Schlange",
+              "start" : 1759853,
+              "end" : 2374520
+            },
+            {
+              "titel" : "Die goldene Kobra",
+              "start" : 2374520,
+              "end" : 2865387
+            }
+          ],
+          "ripLog" : "http://dreimetadaten.de/data/Spezial/und-die-singende-Schlange/rip_log1.txt"
+        },
+        {
+          "tracks" : [
+            {
+              "titel" : "Die Diamanten der Kaiserin",
+              "start" : 0,
+              "end" : 306133
+            },
+            {
+              "titel" : "Dr. Shaitans Geister",
+              "start" : 306133,
+              "end" : 969067
+            },
+            {
+              "titel" : "Tante Patricia in Bedrängnis",
+              "start" : 969067,
+              "end" : 1418173
+            },
+            {
+              "titel" : "Ein Opfer der Angst",
+              "start" : 1418173,
+              "end" : 1813760
+            },
+            {
+              "titel" : "Maras weiße Magie",
+              "start" : 1813760,
+              "end" : 2193640
+            },
+            {
+              "titel" : "Schluss mit der Schlangenbeschwörung",
+              "start" : 2193640,
+              "end" : 2553987
+            }
+          ],
+          "ripLog" : "http://dreimetadaten.de/data/Spezial/und-die-singende-Schlange/rip_log2.txt"
         }
       ]
     }
