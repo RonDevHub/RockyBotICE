@@ -34,10 +34,11 @@ $href = $currentCaseId ? "/folge" . $currentCaseId : "#";
   <meta name="keywords" content="drei ???, mastodon, mastodon bot, bot, die drei fragezeichen">
   <link rel="canonical" href="https://rockybotice.rondev.de/">
   <link rel="icon" type="image/png" href="/public/favicon.png">
-  <link rel="stylesheet" href="/public/assets/style.css">
+  <link rel="stylesheet" href="/public/assets/style-v.2.css">
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
-<body class="min-h-screen flex items-center justify-center p-4 md:p-10">
+<body x-data="{ infoOpen: false, donateOpen: false, contactOpen: false }" class="min-h-screen flex items-center justify-center p-4 md:p-10">
 
   <?php require_once __DIR__ . '/../public/_modals.php'; ?>
 
@@ -142,7 +143,7 @@ $href = $currentCaseId ? "/folge" . $currentCaseId : "#";
               <span class="relative z-30 text-xs font-bold uppercase text-white">Funksprüche/Mastodon</span>
             </a>
 
-            <button data-modal="donateModal" class="w-full group relative overflow-hidden bg-zinc-800 p-4 rounded-lg border-b-4 border-red-700 active:border-b-0 active:translate-y-1 transition-all">
+            <button @click="donateOpen = true" class="w-full group relative overflow-hidden bg-zinc-800 p-4 rounded-lg border-b-4 border-red-700 active:border-b-0 active:translate-y-1 transition-all">
 
               <div class="absolute inset-0 bg-red-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-10"></div>
 
@@ -153,7 +154,7 @@ $href = $currentCaseId ? "/folge" . $currentCaseId : "#";
               <span class="relative z-30 text-xs font-bold uppercase text-white">Kaffeekasse</span>
             </button>
 
-            <button data-modal="contactModal" class="w-full group relative overflow-hidden bg-zinc-800 p-4 rounded-lg border-b-4 border-blue-700 active:border-b-0 active:translate-y-1 transition-all">
+            <button @click="contactOpen = true" class="w-full group relative overflow-hidden bg-zinc-800 p-4 rounded-lg border-b-4 border-blue-700 active:border-b-0 active:translate-y-1 transition-all">
 
               <div class="absolute inset-0 bg-blue-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-10"></div>
 
@@ -182,7 +183,7 @@ $href = $currentCaseId ? "/folge" . $currentCaseId : "#";
             </span>
             </a>
 
-            <button data-modal="infoModal" class="group relative overflow-hidden w-full bg-zinc-900 p-4 rounded-lg border border-zinc-700 hover:bg-zinc-800 transition-colors text-xs uppercase font-bold text-zinc-500">
+            <button @click="$dispatch('open-info-modal')" class="group relative overflow-hidden w-full bg-zinc-900 p-4 rounded-lg border border-zinc-700 hover:bg-zinc-800 transition-colors text-xs uppercase font-bold text-zinc-500">
 
               <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-20 transition-all duration-300 pointer-events-none transform rotate-6 z-20">
                 <span class="border-2 border-zinc-500 px-2 py-1 text-xl font-black uppercase text-zinc-500">Archiviert</span>
@@ -218,7 +219,5 @@ $href = $currentCaseId ? "/folge" . $currentCaseId : "#";
       </div>
     </footer>
   </main>
-
-  <script src="/public/assets/scripts.js"></script>
 </body>
 </html>
