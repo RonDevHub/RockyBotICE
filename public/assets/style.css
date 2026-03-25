@@ -1,217 +1,47 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: system-ui, sans-serif;
-  background: radial-gradient(circle at top, #1a1a1a, #000);
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
+    :root {
+      --ddf-red: #e2001a;
+      --ddf-blue: #009ee0;
+    }
 
-h1 {
-  font-size: 1.6em;
-  margin-bottom: 0.5em;
-  text-align: center;
-}
-.logo {
-  display: inline-block;
-  vertical-align: middle;
-  height: 1.2em;
-}
-p,
-ul {
-  font-size: 0.95em;
-  line-height: 1.6;
-  margin-bottom: 1em;
-}
-ul {
-  padding-left: 1.2em;
-}
-a {
-  color: #1db954;
-  text-decoration: underline;
-}
+    body {
+      background-color: #050505;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M30 50 Q 50 10 70 50' stroke='rgba(255,255,255,0.03)' fill='none' stroke-width='0.5'/%3E%3Cpath d='M20 50 Q 50 0 80 50' stroke='rgba(255,255,255,0.02)' fill='none' stroke-width='0.5'/%3E%3C/svg%3E");
+      color: #f8fafc;
+      font-family: 'Courier New', Courier, monospace;
+      /* Schreibmaschinen-Vibe für Akten */
+    }
 
-.card {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
-  padding: 2em;
-  max-width: 500px;
-  width: 90%;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
-  text-align: center;
-}
+    /* Wohnwagen-Aluminium-Effekt */
+    .trailer-shell {
+      background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+      border: 2px solid #333;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
 
-.card2 {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
-  padding: 2em;
-  max-width: 600px;
-  width: 90%;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
-}
+    /* Akten-Reiter (Folder Tabs) */
+    .file-tab {
+      clip-path: polygon(0% 0%, 85% 0%, 100% 100%, 0% 100%);
+    }
 
-.card h1 {
-  font-size: 1.4em;
-  margin-bottom: 0.3em;
-}
+    /* RonDev Farbverlauf Animation */
+    @keyframes ddf-flow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-.card p.meta {
-  font-size: 0.9em;
-  color: #ccc;
-  margin-bottom: 1em;
-}
+    .animate-ddf {
+      background: linear-gradient(90deg, #ffffff, #e2001a, #009ee0, #ffffff);
+      background-size: 300% 300%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: ddf-flow 4s ease infinite;
+    }
 
-.card2 {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
-  padding: 2em;
-  max-width: 500px;
-  width: 90%;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
-}
-
-.card2 h1 {
-  font-size: 1.4em;
-  margin-bottom: 0.3em;
-  text-align: center;
-}
-
-.card2 p.meta {
-  font-size: 0.9em;
-  color: #ccc;
-  margin-bottom: 1em;
-}
-
-.cover {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 1em;
-}
-
-.beschreibung {
-  font-size: 0.95em;
-  color: #ddd;
-  margin-bottom: 1.5em;
-  text-align: left;
-  white-space: pre-line;
-}
-
-.link {
-  display: flex;
-  align-items: center;
-  gap: 0.6em;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0.6em 1em;
-  margin: 0.4em 0;
-  border-radius: 10px;
-  text-decoration: none;
-  color: #fff;
-  transition: background 0.2s ease;
-}
-
-.link:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.icon svg {
-  vertical-align: middle;
-}
-
-.label {
-  flex: 1;
-  text-align: left;
-}
-
-.back {
-  margin-top: 2em;
-  font-size: 0.8em;
-  color: #aaa;
-  text-align: center;
-}
-
-.back a {
-  color: #aaa;
-  text-decoration: underline;
-}
-
-@media (max-width: 600px) {
-  .card {
-    padding: 1.2em;
-  }
-
-  .card h1 {
-    font-size: 1.2em;
-  }
-
-  .beschreibung {
-    font-size: 0.9em;
-  }
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
-}
-
-.modal-content {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  margin: 10% auto;
-  padding: 2em;
-  border-radius: 20px;
-  width: 90%;
-  max-width: 400px;
-  color: #fff;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
-}
-
-.modal-content a {
-  color: #1db954;
-  text-decoration: underline;
-}
-
-.close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 2em;
-  color: #fff;
-  cursor: pointer;
-}
-
-.footer {
-  margin-top: 2em;
-  font-size: 0.8em;
-  color: #aaa;
-  text-align: center;
-}
-
-.donate {
-  display: block;
-  margin-bottom: .7em;
-}
-
-.badge {
-  display: inline-block;
-  padding: 0.3em 0.7em;
-  border-radius: 999px;
-  font-size: 0.75em;
-  font-weight: bold;
-  color: #fff;
-  margin-bottom: 1em;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
+    /* Beweisfoto Klebestreifen */
+    .photo-tape {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(2px);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
