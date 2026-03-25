@@ -95,9 +95,10 @@ $platforms = [
   <meta name="keywords" content="drei ???, mastodon, mastodon bot, bot, die drei fragezeichen">
   <link rel="canonical" href="https://rockybotice.rondev.de/">
   <link rel="icon" type="image/png" href="/public/favicon.png">
-  <link rel="stylesheet" href="/public/assets/style.css">
+  <link rel="stylesheet" href="/public/assets/style-v.2.css">
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4 md:p-10">
+<body x-data="{ infoOpen: false, donateOpen: false, contactOpen: false }" class="min-h-screen flex items-center justify-center p-4 md:p-10">
 
   <?php require_once __DIR__ . '/../public/_modals.php'; ?>
 
@@ -127,16 +128,25 @@ $platforms = [
     <div class="flex flex-col md:flex-row min-h-[400px]">
       
       <aside class="w-full md:w-80 p-8 border-b md:border-b-0 md:border-r border-zinc-800 flex flex-col items-center">
-        
-        <div class="relative inline-block rotate-2 hover:rotate-0 transition-transform duration-500 mb-10 group">
-          <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-10 photo-tape -rotate-6 z-20 opacity-80"></div>
-          <div class="bg-zinc-200 p-3 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-            <img src="<?php echo htmlspecialchars($cover); ?>" 
-                 alt="Cover" 
-                 class="w-70 h-70 object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500">
-          </div>
-          <p class="mt-4 text-[10px] text-zinc-600 text-center uppercase tracking-widest font-sans">Abb. 1: Tonträger-Umschlag</p>
+          
+
+      <div x-data="{ imgLoaded: false }" 
+           x-init="if ($refs.coverImage.complete) imgLoaded = true"
+           class="relative inline-block rotate-2 hover:rotate-0 transition-transform duration-500 mb-10 group">
+      <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-10 photo-tape -rotate-6 z-20 opacity-80"></div>
+      <div class="bg-zinc-200 p-3 shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden w-70 h-70">
+        <div x-show="!imgLoaded" 
+             class="absolute inset-0 bg-zinc-300 animate-pulse flex items-center justify-center z-10">
+          <span class="text-zinc-400 text-[10px] uppercase tracking-tighter">Akte wird geladen...</span>
         </div>
+        <img
+          x-ref="coverImage" 
+          @load="imgLoaded = true"
+          src="<?php echo htmlspecialchars($cover); ?>"
+          alt="Cover"
+          fetchpriority="high" class="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-opacity duration-500"> </div>
+      <p class="mt-4 text-[10px] text-zinc-600 text-center uppercase tracking-widest font-sans">Abb. 1: Tonträger-Umschlag</p>
+      </div>
 
         <div class="w-full space-y-6">
           <div>
@@ -163,68 +173,77 @@ $platforms = [
           </div>
         </section>
 
-        <section>
-          <h2 class="text-xl font-bold border-b border-zinc-700 pb-2 mb-6 text-zinc-300 uppercase italic">📡 Funk-Verbindungen</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <section x-data="{ loading: true }" x-init="setTimeout(() => loading = false, 100)" class="min-h-[250px]">
+    <h2 class="text-xl font-bold border-b border-zinc-700 pb-2 mb-6 text-zinc-300 uppercase italic tracking-tighter">
+        📡 Funk-Verbindungen
+    </h2>
 
-        <?php foreach ($platforms as $key => $p): ?>
-            <?php if (!empty($folge['links'][$key])): ?>
-                <a href="<?php echo htmlspecialchars($folge['links'][$key]); ?>"
-                   target="_blank"
-                   class="group relative overflow-hidden bg-zinc-800/50 p-4 rounded-lg border-b-4 border-<?php echo htmlspecialchars($p['color']); ?>-700 hover:border-<?php echo htmlspecialchars($p['color']); ?>-500 transition-all active:translate-y-1">
-                <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-20 transition-all duration-300 pointer-events-none transform <?php echo ($key === 'spotify' ? '-rotate-12' : 'rotate-12'); ?> z-20">
-                <span class="border-2 border-<?php echo htmlspecialchars($p['color']); ?>-400 px-2 py-1 text-xl font-black uppercase text-<?php echo htmlspecialchars($p['color']); ?>-400">
-                <?php echo htmlspecialchars($p['text']); ?>
+    <div x-show="loading" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <?php 
+        // Wir generieren so viele Platzhalter, wie wir Plattformen + 2 Buttons erwarten
+        $placeholderCount = count(array_filter($platforms, fn($key) => !empty($folge['links'][$key]), ARRAY_FILTER_USE_KEY)) + 2;
+        for ($i = 0; $i < $placeholderCount; $i++): 
+        ?>
+            <div class="h-[68px] w-full bg-zinc-800/50 rounded-lg border-b-4 border-zinc-700 animate-pulse flex items-center p-4 gap-3">
+                <div class="w-8 h-8 bg-zinc-700 rounded-full"></div> <div class="h-3 w-24 bg-zinc-700 rounded"></div> </div>
+        <?php endfor; ?>
+    </div>
+
+    <div x-show="!loading" x-cloak x-transition.opacity.duration.500ms class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+        <?php foreach ($platforms as $key => $p): 
+            $url = $folge['links'][$key] ?? '';
+            if (empty($url)) continue;
+            $color = $p['color'];
+            $rotate = ($key === 'spotify') ? '-rotate-12' : 'rotate-12';
+        ?>
+            <a href="<?= htmlspecialchars($url) ?>" target="_blank"
+               class="group relative overflow-hidden bg-zinc-800/50 p-4 rounded-lg border-b-4 border-<?= $color ?>-700 hover:border-<?= $color ?>-500 transition-all active:translate-y-1">
+                <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-20 transition-all duration-300 pointer-events-none transform <?= $rotate ?> z-20">
+                    <span class="border-2 border-<?= $color ?>-400 px-2 py-1 text-xl font-black uppercase text-<?= $color ?>-400">
+                        <?= htmlspecialchars($p['text']) ?>
+                    </span>
                 </span>
-                </span>
-                    <div class="relative z-30 flex items-center gap-3">
-                    <span class="text-2xl"><?php echo $icons[$p['icon']]; ?></span>
-                <span class="text-xs font-bold uppercase text-zinc-300 group-hover:text-white">
-                    <?php echo htmlspecialchars($p['name']); ?>
-                </span>
+                <div class="relative z-30 flex items-center gap-3">
+                    <span class="text-2xl"><?= $icons[$p['icon']] ?></span>
+                    <span class="text-xs font-bold uppercase text-zinc-300 group-hover:text-white"><?= htmlspecialchars($p['name']) ?></span>
                 </div>
-                </a>
-            <?php endif; ?>
+            </a>
         <?php endforeach; ?>
 
-            <button data-modal="donateModal" 
-                class="group relative overflow-hidden bg-zinc-800/50 p-4 rounded-lg border-b-4 border-amber-500 hover:border-amber-400 transition-all active:translate-y-1">
-                <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-20 transition-all duration-300 pointer-events-none transform rotate-12 z-20">
-                    <span class="border-2 border-amber-400 px-2 py-1 text-xl font-black uppercase text-amber-400">Top Secret</span>
-                </span>
-                <div class="relative z-30 flex items-center gap-3">
-                    <span class="text-2xl">☕️</span>
-                    <span class="text-xs font-bold uppercase text-zinc-300 group-hover:text-white">Kaffeekasse</span>
-                </div>
-            </button>
+        <button @click="donateOpen = true" class="group relative overflow-hidden bg-zinc-800/50 p-4 rounded-lg border-b-4 border-amber-500 hover:border-amber-400 transition-all active:translate-y-1">
+            <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-20 transition-all duration-300 pointer-events-none transform rotate-12 z-20">
+                <span class="border-2 border-amber-400 px-2 py-1 text-xl font-black uppercase text-amber-400">Top Secret</span>
+            </span>
+            <div class="relative z-30 flex items-center gap-3">
+                <span class="text-2xl">☕️</span>
+                <span class="text-xs font-bold uppercase text-zinc-300 group-hover:text-white">Kaffeekasse</span>
+            </div>
+        </button>
 
-            <button data-modal="contactModal" 
-                class="group relative overflow-hidden bg-zinc-800/50 p-4 rounded-lg border-b-4 border-blue-500 hover:border-blue-400 transition-all active:translate-y-1">
-                <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-20 transition-all duration-300 pointer-events-none transform rotate-12 z-20">
-                    <span class="border-2 border-blue-400 px-2 py-1 text-xl font-black uppercase text-blue-400">Eilt Sehr!</span>
-                </span>
-                <div class="relative z-30 flex items-center gap-3">
-                    <span class="text-2xl">📟️</span>
-                    <span class="text-xs font-bold uppercase text-zinc-300 group-hover:text-white">Funkkontakt</span>
-                </div>
-            </button>
+        <button @click="contactOpen = true" class="group relative overflow-hidden bg-zinc-800/50 p-4 rounded-lg border-b-4 border-blue-500 hover:border-blue-400 transition-all active:translate-y-1">
+            <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-20 transition-all duration-300 pointer-events-none transform rotate-12 z-20">
+                <span class="border-2 border-blue-400 px-2 py-1 text-xl font-black uppercase text-blue-400">Eilt Sehr!</span>
+            </span>
+            <div class="relative z-30 flex items-center gap-3">
+                <span class="text-2xl">📟️</span>
+                <span class="text-xs font-bold uppercase text-zinc-300 group-hover:text-white">Funkkontakt</span>
+            </div>
+        </button>
 
-          </div>
-        </section>
-
+    </div>
+</section>
         <footer class="pt-10 border-t border-zinc-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] text-zinc-600 uppercase tracking-widest">
           <div>
             Ermittler: <a href="https://rondev.de" target="_blank" class="animate-ddf font-bold transition-all">RonDev</a>
           </div>
           <div class="flex gap-6">
-            <button data-modal="infoModal" class="hover:text-white transition-colors underline decoration-zinc-800 underline-offset-4">Metadaten-Quelle</button>
+            <button @click="$dispatch('open-info-modal')" class="hover:text-white transition-colors underline decoration-zinc-800 underline-offset-4">Metadaten-Quelle</button>
             <span>Stand: <?php echo date('d.m.Y'); ?></span>
           </div>
         </footer>
       </div>
     </div>
   </main>
-
-  <script src="/public/assets/scripts.js"></script>
 </body>
 </html>
