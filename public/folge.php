@@ -11,7 +11,7 @@ Logger::init($config);
 
 $id = $_GET['id'] ?? null;
 if (!$id || !is_numeric($id)) {
-    echo "<h1>Ungültige ID</h1>";
+    header("Location: /");
     exit;
 }
 
@@ -23,44 +23,26 @@ $map = [
 
 $folge = null;
 $typ = 'Unbekannt';
-$typBadgeColor = '#888';
 
 foreach ($map as $file => $key) {
     $path = $config['data_path'] . $file;
+    if (!file_exists($path)) continue;
     $json = json_decode(file_get_contents($path), true);
     $list = $json[$key] ?? [];
 
     foreach ($list as $f) {
         if (($f['ids']['dreimetadaten'] ?? null) == $id) {
             $folge = $f;
-
-            // Typ bestimmen
-            $typMap = [
-                'serie' => 'Serie',
-                'spezial' => 'Spezial',
-                'kurzgeschichten' => 'Kurzgeschichte'
-            ];
-            $typ = $typMap[$key] ?? 'Unbekannt';
-
-            // Farbe für Badge setzen
-            $typColor = [
-                'Serie' => '#1DB954',           // grün
-                'Spezial' => '#FF9900',         // orange
-                'Kurzgeschichte' => '#009ee0',  // blau
-                'Unbekannt' => '#888'
-            ];
-            $typBadgeColor = $typColor[$typ] ?? '#888';
-
+            $typ = ($key == 'serie') ? 'Serie' : (($key == 'spezial') ? 'Spezial' : 'Kurzgeschichte');
             break 2;
         }
     }
 }
 
 if (!$folge) {
-    echo "<h1>Folge nicht gefunden</h1>";
+    echo "<h1>Fallakte nicht gefunden</h1>";
     exit;
 }
-
 
 $titel = htmlspecialchars($folge['titel'] ?? 'Unbekannt');
 $nummer = $folge['nummer'] ?? '-';
@@ -75,19 +57,8 @@ $sekunden = floor($dauer / 1000);
 $stunden  = floor($sekunden / 3600);
 $minuten  = floor(($sekunden % 3600) / 60);
 
-// Wandelt http:// in https:// um
 if (strpos($cover, "http://") === 0) {
     $cover = "https://" . substr($cover, 7);
-}
-
-function linkButton($name, $url, $svg)
-{
-    if (!$url) return '';
-    $safe = htmlspecialchars($url);
-    return "<a href=\"$safe\" target=\"_blank\" class=\"link\">
-        <span class=\"icon\">$svg</span>
-        <span class=\"label\">$name</span>
-    </a>";
 }
 
 // SVG-Icons (minimalistisch, inline)
@@ -102,78 +73,158 @@ $icons = [
     'datum' => '<svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432 540"><path fill="currentColor" d="M234 36c0-9.9-8.1-18-18-18s-18 8.1-18 18l0 18-72 0 0-18c0-9.9-8.1-18-18-18S90 26.1 90 36l0 18-18 0C32.2 54 0 86.2 0 126L0 432c0 39.8 32.2 72 72 72l288 0c39.8 0 72-32.2 72-72l0-306c0-39.8-32.2-72-72-72l-18 0 0-18c0-9.9-8.1-18-18-18s-18 8.1-18 18l0 18-72 0 0-18zM90 90l0 18c0 9.9 8.1 18 18 18s18-8.1 18-18l0-18 72 0 0 18c0 9.9 8.1 18 18 18s18-8.1 18-18l0-18 72 0 0 18c0 9.9 8.1 18 18 18s18-8.1 18-18l0-18 18 0c19.9 0 36 16.1 36 36l0 54-360 0 0-54c0-19.9 16.1-36 36-36l18 0zM36 216l360 0 0 180c0 19.9-16.1 36-36 36L72 432c-19.9 0-36-16.1-36-36l0-180z"/></svg>',
     'time' => '<svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 504 540"><path fill="currentColor" d="M270 108c0-9.9-8.1-18-18-18s-18 8.1-18 18l0 129.1c0 14.3 5.7 28.1 15.8 38.2l61.5 61.5c7 7 18.4 7 25.5 0s7-18.4 0-25.5l-61.5-61.5c-3.4-3.4-5.3-8-5.3-12.7L270 108zM252 0C112.8 0 0 112.8 0 252l0 36C0 427.2 112.8 540 252 540S504 427.2 504 288l0-36C504 112.8 391.2 0 252 0zm0 468a216 216 0 1 1 0-432 216 216 0 1 1 0 432z"/></svg>',
 ];
+// Konfiguration der Plattformen
+$platforms = [
+    "spotify"         => ["name" => "Spotify",        "color" => "emerald", "text" => "Abspielen",   "icon" => "Spotify"],
+    "appleMusic"      => ["name" => "Apple Music",    "color" => "rose",    "text" => "Streamen",    "icon" => "Apple Music"],
+    "deezer"          => ["name" => "Deezer",         "color" => "purple",  "text" => "Streamen",    "icon" => "Deezer"],
+    "amazonMusic"     => ["name" => "Amazon Music",   "color" => "cyan",    "text" => "Streamen",    "icon" => "Amazon Music"],
+    "youTubeMusic"    => ["name" => "YouTube Music",  "color" => "red",     "text" => "Streamen",    "icon" => "YouTube Music"],
+    "bookbeat"        => ["name" => "BookBeat",       "color" => "violet",  "text" => "Streamen",    "icon" => "BookBeat"],
+    "dreifragezeichen" => ["name" => "Produktseite",  "color" => "orange",  "text" => "Informieren", "icon" => "Produktseite"]
+];
 ?>
-
 <!DOCTYPE html>
-<html lang="de">
-
+<html lang="de" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <title><?php echo $titel; ?> - Drei ???</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Die drei ??? übernehmen jeden Fall – und RockyBotICE übernimmt die tägliche Empfehlung.">
-    <meta name="keywords" content="drei ???, mastodon, mastodon bot, bot, die drei fragezeichen">
-    <link rel="canonical" href="https://rockybotice.rondev.de/">
-    <link rel="icon" type="image/png" href="/public/favicon.png">
-    <link rel="stylesheet" href="/public/assets/style.css">
+  <meta charset="UTF-8">
+  <title><?php echo htmlspecialchars($folge['titel']); ?> - Fallakte</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="Die drei ??? übernehmen jeden Fall – und RockyBotICE übernimmt die tägliche Empfehlung.">
+  <meta name="keywords" content="drei ???, mastodon, mastodon bot, bot, die drei fragezeichen">
+  <link rel="canonical" href="https://rockybotice.rondev.de/">
+  <link rel="icon" type="image/png" href="/public/favicon.png">
+  <link rel="stylesheet" href="/public/assets/style.css">
 </head>
-<?php require_once __DIR__ . '/../public/_modals.php'; ?>
+<body class="min-h-screen flex items-center justify-center p-4 md:p-10">
 
-<body>
-    <div class="card">
-        <h1><?php echo $titel; ?></h1>
-        <p class="meta">
-            Folge <?php echo $nummer; ?> · <span class="badge" style="background-color: <?php echo $typBadgeColor; ?>;">
-                <?php echo $typ; ?>
-            </span>
-        </p>
+  <?php require_once __DIR__ . '/../public/_modals.php'; ?>
 
-        <?php if ($cover): ?>
-            <img src="<?php echo htmlspecialchars($cover); ?>" alt="Cover" class="cover">
-        <?php endif; ?>
+  <main class="max-w-5xl w-full trailer-shell rounded-[2rem] overflow-hidden relative">
+    
+    <div class="absolute top-4 left-4 w-2 h-2 rounded-full bg-zinc-700 shadow-inner"></div>
+    <div class="absolute top-4 right-4 w-2 h-2 rounded-full bg-zinc-700 shadow-inner"></div>
+    <div class="absolute bottom-4 left-4 w-2 h-2 rounded-full bg-zinc-700 shadow-inner"></div>
+    <div class="absolute bottom-4 right-4 w-2 h-2 rounded-full bg-zinc-700 shadow-inner"></div>
 
-        <?php if ($datum): ?>
-            <span class="badge" style="background-color: #7345fdff; margin-right: 10px;"><?php echo $icons['datum']; ?> <?php echo date('d.m.Y', strtotime($datum)); ?></span> <span class="badge" style="background-color: #b233f7ff;"><?php echo $icons['time']; ?> <?php echo $stunden . " Std " . $minuten . " Min"; ?></span>
-        <?php endif; ?>
-
-        <?php if ($beschreibung): ?>
-            <div class="beschreibung"><?php echo nl2br(htmlspecialchars($beschreibung)); ?></div>
-        <?php endif; ?>
-
-        <?php
-        echo linkButton('Spotify', $links['spotify'] ?? null, $icons['Spotify']);
-        echo linkButton('Deezer', $links['deezer'] ?? null, $icons['Deezer']);
-        echo linkButton('Apple Music', $links['appleMusic'] ?? null, $icons['Apple Music']);
-        echo linkButton('Amazon Music', $links['amazonMusic'] ?? null, $icons['Amazon Music']);
-        echo linkButton('YouTube Music', $links['youTubeMusic'] ?? null, $icons['YouTube Music']);
-        echo linkButton('BookBeat', $links['bookbeat'] ?? null, $icons['BookBeat']);
-        echo linkButton('Produktseite', $links['dreifragezeichen'] ?? null, $icons['Produktseite']);
-        ?>
-
-        <div class="back">
-            <a href="<?php echo htmlspecialchars($config['base_url']); ?>" style="margin-right: 20px;"><svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 640 512">
-                    <path style="fill:#f3f4f7;opacity:.4" d="M48 96c0 85.4 0 170.7 0 256 .1 26.6 21.5 48 48 48l43.3 0c10.4-36.9 44.4-64 84.7-64s74.2 27.1 84.7 64l27.3 0 0-232c0-22.1 17.9-40 40-40l48 0c22.1 0 40 17.9 40 40l0 232 64 0 0-240c0-61.9-50.1-112-112-112L96 48C69.5 48 48 69.5 48 96zm80 72c0-22.1 17.9-40 40-40l48 0c22.1 0 40 17.9 40 40l0 48c0 22.1-17.9 40-40 40l-48 0c-22.1 0-40-17.9-40-40l0-48z" />
-                    <path style="fill:#f3f4f7;opacity:1" d="M96 48C69.5 48 48 69.5 48 96l0 256c0 26.5 21.5 48 48 48l43.3 0c10.4-36.9 44.4-64 84.7-64s74.2 27.1 84.7 64l27.3 0 0-232c0-22.1 17.9-40 40-40l48 0c22.1 0 40 17.9 40 40l0 232 64 0 0-240c0-61.9-50.1-112-112-112L96 48zm40.4 368L96 416c-35.3 0-64-28.7-64-64L32 96c0-35.3 28.7-64 64-64l320 0c70.7 0 128 57.3 128 128l0 240 88 0c4.4 0 8 3.6 8 8s-3.6 8-8 8l-320.4 0c.2 2.6 .4 5.3 .4 8 0 48.6-39.4 88-88 88s-88-39.4-88-88c0-2.7 .1-5.4 .4-8zM352 400l96 0 0-128-40 0c-4.4 0-8-3.6-8-8s3.6-8 8-8l40 0 0-88c0-13.3-10.7-24-24-24l-48 0c-13.3 0-24 10.7-24 24l0 232zM216 144l-48 0c-13.3 0-24 10.7-24 24l0 48c0 13.3 10.7 24 24 24l48 0c13.3 0 24-10.7 24-24l0-48c0-13.3-10.7-24-24-24zm-48-16l48 0c22.1 0 40 17.9 40 40l0 48c0 22.1-17.9 40-40 40l-48 0c-22.1 0-40-17.9-40-40l0-48c0-22.1 17.9-40 40-40zm56 368a72 72 0 1 0 0-144 72 72 0 1 0 0 144z" />
-                </svg></a>
-            <a href="#" data-modal="donateModal" target="_blank" style="margin-right: 20px;"><svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 576 512">
-                    <path style="fill:#ff0000;opacity:.4" d="M.5 148.8c7.1 80.9 85.5 149.2 158.1 197.1-10.4-28.5-15.9-59-13.1-90.7 7.1-81.3 78.8-141.5 160.2-134.4 28 2.5 54.3 12.8 76.2 29.3 1.7-11.5 2.2-23.1 1.2-34.7-4.8-54.9-53.2-95.6-108.2-90.8-31.9 2.8-60.6 20.7-77 48.2l-9.8 16.5-12.6-14.5c-21-24.2-52.3-36.9-84.2-34.1-54.9 4.8-95.6 53.2-90.8 108.2z" />
-                    <path style="fill:#ff0000;opacity:1" d="M301.5 168.6c31.9 2.8 60.6 20.7 77 48.2l9.8 16.5 12.6-14.5c21-24.2 52.3-36.9 84.2-34.1 54.9 4.8 95.6 53.2 90.8 108.2-8.9 102.2-131.7 184.3-212.9 230.5-72-59.5-178.6-161.7-169.6-263.9 4.8-54.9 53.2-95.6 108.2-90.8z" />
-                </svg></a>
-            <a href="#" data-modal="contactModal" target="_blank" style="margin-right: 20px;"><svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 512 512">
-                    <path style="fill:var(--fa-secondary-color,currentColor);opacity:var(--fa-secondary-opacity,.4)" d="M32 122.5c0 8.4 4 16.4 10.8 21.4L227.6 279.3c16.9 12.4 39.9 12.4 56.8 0L469.2 143.8c6.8-5 10.8-12.9 10.8-21.4 0-14.6-11.9-26.5-26.5-26.5l-395 0C43.9 96 32 107.9 32 122.5zm0 53.1L32 384c0 17.7 14.3 32 32 32l384 0c17.7 0 32-14.3 32-32l0-208.4-176.7 129.6c-28.2 20.6-66.5 20.6-94.6 0L32 175.6z" />
-                    <path style="fill:var(--fa-primary-color,currentColor);opacity:var(--fa-primary-opacity,1)" d="M0 122.5l0-2.5 .1 0C1.3 88.9 27 64 58.5 64l395 0c31.5 0 57.1 24.9 58.4 56l.1 0 0 264c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 122.5zm480 53.1L303.3 305.1c-28.2 20.6-66.5 20.6-94.6 0L32 175.6 32 384c0 17.7 14.3 32 32 32l384 0c17.7 0 32-14.3 32-32l0-208.4zm0-53.1c0-14.6-11.9-26.5-26.5-26.5l-395 0c-14.6 0-26.5 11.9-26.5 26.5 0 8.4 4 16.4 10.8 21.4L227.6 279.3c16.9 12.4 39.9 12.4 56.8 0L469.2 143.8c6.8-5 10.8-12.9 10.8-21.4z" />
-                </svg></a>
-            <a href="#" data-modal="infoModal" target="_blank" style="margin-right: 20px;"><svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 512 512">
-                    <path style="fill:var(--fa-secondary-color,currentColor);opacity:var(--fa-secondary-opacity,.4)" d="M16 256a240 240 0 1 0 480 0 240 240 0 1 0 -480 0zm184-40c0-4.4 3.6-8 8-8l48 0c4.4 0 8 3.6 8 8l0 136 40 0c4.4 0 8 3.6 8 8s-3.6 8-8 8l-96 0c-4.4 0-8-3.6-8-8s3.6-8 8-8l40 0 0-128-40 0c-4.4 0-8-3.6-8-8zm72-56a16 16 0 1 1 -32 0 16 16 0 1 1 32 0z" />
-                    <path style="fill:var(--fa-primary-color,currentColor);opacity:var(--fa-primary-opacity,1)" d="M256 16a240 240 0 1 1 0 480 240 240 0 1 1 0-480zm0 496a256 256 0 1 0 0-512 256 256 0 1 0 0 512zM208 352c-4.4 0-8 3.6-8 8s3.6 8 8 8l96 0c4.4 0 8-3.6 8-8s-3.6-8-8-8l-40 0 0-136c0-4.4-3.6-8-8-8l-48 0c-4.4 0-8 3.6-8 8s3.6 8 8 8l40 0 0 128-40 0zm48-176a16 16 0 1 0 0-32 16 16 0 1 0 0 32z" />
-                </svg></a>
+    <header class="pt-12 px-6 md:px-12 pb-8 border-b border-zinc-800">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <div class="inline-block bg-zinc-800 px-8 py-2 file-tab mb-4">
+            <span class="text-[10px] uppercase tracking-[0.3em] text-zinc-500 font-sans">Beweismittel // Fall-ID: <?php echo $id; ?></span>
+          </div>
+          <h1 class="text-3xl md:text-5xl font-black italic uppercase tracking-tighter">
+            <?php echo htmlspecialchars($folge['titel']); ?>
+          </h1>
         </div>
-        <div class="footer">
-            &copy; <?php echo date("Y"); ?> - <a href="<?php echo htmlspecialchars($config['base_url']); ?>"><?php echo htmlspecialchars($config['botname']); ?></a><br>
-            <strong>Die drei ??? übernehmen jeden Fall - und <?php echo htmlspecialchars($config['botname']); ?> übernimmt die tägliche Empfehlung.</strong>
+        <a href="/" class="text-zinc-500 hover:text-white transition-colors text-xs uppercase tracking-widest border border-zinc-700 px-4 py-2 rounded hover:bg-zinc-800 mb-2 md:mb-0 text-center">
+          ← Zurück zur Zentrale
+        </a>
+      </div>
+    </header>
+
+    <div class="flex flex-col md:flex-row min-h-[400px]">
+      
+      <aside class="w-full md:w-80 p-8 border-b md:border-b-0 md:border-r border-zinc-800 flex flex-col items-center">
+        
+        <div class="relative inline-block rotate-2 hover:rotate-0 transition-transform duration-500 mb-10 group">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-10 photo-tape -rotate-6 z-20 opacity-80"></div>
+          <div class="bg-zinc-200 p-3 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+            <img src="<?php echo htmlspecialchars($cover); ?>" 
+                 alt="Cover" 
+                 class="w-70 h-70 object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-500">
+          </div>
+          <p class="mt-4 text-[10px] text-zinc-600 text-center uppercase tracking-widest font-sans">Abb. 1: Tonträger-Umschlag</p>
         </div>
+
+        <div class="w-full space-y-6">
+          <div>
+            <h3 class="text-[10px] text-zinc-600 uppercase tracking-widest mb-2 font-sans font-bold">Klassifizierung</h3>
+            <p class="text-sm border-l-2 border-[var(--ddf-blue)] pl-3 text-zinc-300"><?php echo $typ; ?></p>
+          </div>
+          <div>
+            <h3 class="text-[10px] text-zinc-600 uppercase tracking-widest mb-2 font-sans font-bold">Veröffentlichung</h3>
+            <p class="text-sm border-l-2 border-[var(--ddf-red)] pl-3 text-zinc-300"><?php echo date('d.m.Y', strtotime($datum)); ?></p>
+          </div>
+          <div>
+            <h3 class="text-[10px] text-zinc-600 uppercase tracking-widest mb-2 font-sans font-bold">Aktenseiten / Falldauer</h3>
+            <p class="text-sm border-l-2 border-white pl-3 text-zinc-300"><?php echo count($folge['kapitel'] ?? []); ?> Kapitel<br><?php echo $stunden . " Std " . $minuten . " Min"; ?></p>
+          </div>
+        </div>
+      </aside>
+
+      <div class="flex-1 p-8 md:p-12 space-y-12">
+        
+        <section>
+          <h2 class="text-xl font-bold border-b border-zinc-700 pb-2 mb-4 text-zinc-300 uppercase italic">🔍 Sachverhalt</h2>
+          <div class="text-zinc-400 leading-relaxed text-sm md:text-base italic bg-black/20 p-6 rounded-xl border border-white/5 shadow-inner">
+            "<?php echo nl2br(htmlspecialchars($beschreibung) ?? 'Keine weiteren Details in der Akte vermerkt.'); ?>"
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-bold border-b border-zinc-700 pb-2 mb-6 text-zinc-300 uppercase italic">📡 Funk-Verbindungen</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+        <?php foreach ($platforms as $key => $p): ?>
+            <?php if (!empty($folge['links'][$key])): ?>
+                <a href="<?php echo htmlspecialchars($folge['links'][$key]); ?>"
+                   target="_blank"
+                   class="group relative overflow-hidden bg-zinc-800/50 p-4 rounded-lg border-b-4 border-<?php echo htmlspecialchars($p['color']); ?>-700 hover:border-<?php echo htmlspecialchars($p['color']); ?>-500 transition-all active:translate-y-1">
+                <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-20 transition-all duration-300 pointer-events-none transform <?php echo ($key === 'spotify' ? '-rotate-12' : 'rotate-12'); ?> z-20">
+                <span class="border-2 border-<?php echo htmlspecialchars($p['color']); ?>-400 px-2 py-1 text-xl font-black uppercase text-<?php echo htmlspecialchars($p['color']); ?>-400">
+                <?php echo htmlspecialchars($p['text']); ?>
+                </span>
+                </span>
+                    <div class="relative z-30 flex items-center gap-3">
+                    <span class="text-2xl"><?php echo $icons[$p['icon']]; ?></span>
+                <span class="text-xs font-bold uppercase text-zinc-300 group-hover:text-white">
+                    <?php echo htmlspecialchars($p['name']); ?>
+                </span>
+                </div>
+                </a>
+            <?php endif; ?>
+        <?php endforeach; ?>
+
+            <button data-modal="donateModal" 
+                class="group relative overflow-hidden bg-zinc-800/50 p-4 rounded-lg border-b-4 border-amber-500 hover:border-amber-400 transition-all active:translate-y-1">
+                <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-20 transition-all duration-300 pointer-events-none transform rotate-12 z-20">
+                    <span class="border-2 border-amber-400 px-2 py-1 text-xl font-black uppercase text-amber-400">Top Secret</span>
+                </span>
+                <div class="relative z-30 flex items-center gap-3">
+                    <span class="text-2xl">☕️</span>
+                    <span class="text-xs font-bold uppercase text-zinc-300 group-hover:text-white">Kaffeekasse</span>
+                </div>
+            </button>
+
+            <button data-modal="contactModal" 
+                class="group relative overflow-hidden bg-zinc-800/50 p-4 rounded-lg border-b-4 border-blue-500 hover:border-blue-400 transition-all active:translate-y-1">
+                <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-20 transition-all duration-300 pointer-events-none transform rotate-12 z-20">
+                    <span class="border-2 border-blue-400 px-2 py-1 text-xl font-black uppercase text-blue-400">Eilt Sehr!</span>
+                </span>
+                <div class="relative z-30 flex items-center gap-3">
+                    <span class="text-2xl">📟️</span>
+                    <span class="text-xs font-bold uppercase text-zinc-300 group-hover:text-white">Funkkontakt</span>
+                </div>
+            </button>
+
+          </div>
+        </section>
+
+        <footer class="pt-10 border-t border-zinc-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] text-zinc-600 uppercase tracking-widest">
+          <div>
+            Ermittler: <a href="https://rondev.de" target="_blank" class="animate-ddf font-bold transition-all">RonDev</a>
+          </div>
+          <div class="flex gap-6">
+            <button data-modal="infoModal" class="hover:text-white transition-colors underline decoration-zinc-800 underline-offset-4">Metadaten-Quelle</button>
+            <span>Stand: <?php echo date('d.m.Y'); ?></span>
+          </div>
+        </footer>
+      </div>
     </div>
-</body>
-<script src="/public/assets/scripts.js"></script>
+  </main>
 
+  <script src="/public/assets/scripts.js"></script>
+</body>
 </html>
