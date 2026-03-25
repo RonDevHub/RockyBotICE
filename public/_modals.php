@@ -1,37 +1,140 @@
-<!-- Modal -->
-    <div id="donateModal" class="modal">
-        <div class="modal-content">
-            <span class="close" data-close>&times;</span>
-            <h2>
-                ☕️  Unterstützen
+<div id="donateModal" 
+     x-show="donateOpen" 
+     x-cloak
+     class="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-50 p-4 transition-opacity duration-300"
+     style="display: flex;"> <div class="trailer-shell bg-zinc-900 w-full max-w-lg rounded-[2rem] shadow-2xl overflow-hidden relative border-2 border-zinc-700"
+         x-show="donateOpen"
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 scale-95"
+         x-transition:enter-end="opacity-100 scale-100"
+         x-transition:leave="transition ease-in duration-300"
+         x-transition:leave-start="opacity-100 scale-100"
+         x-transition:leave-end="opacity-0 scale-95"
+         @click.away="donateOpen = false">
+        
+        <div class="bg-zinc-800 px-6 py-2 file-tab inline-block mt-6 ml-6">
+            <span class="text-[10px] uppercase tracking-widest text-zinc-500 font-sans">Kaffeekasse // Beweismittel</span>
+        </div>
+
+        <button class="absolute top-6 right-8 text-zinc-500 hover:text-white transition-colors text-3xl" 
+                @click="donateOpen = false" aria-label="Schließen">&times;</button>
+
+        <div class="p-8 md:p-10">
+            <h2 class="text-2xl font-bold text-white mb-4 uppercase italic tracking-tighter">
+                <span class="text-[var(--ddf-red)]">!</span> Unterstützung erbeten
             </h2>
-            <p>Wenn dir <strong><?php echo htmlspecialchars($config['botname']); ?></strong> gefällt, kannst du mich gern auf einen virtuellen Kaffee einladen ☕️</p>
-            <span class="donate"><strong>PayPal:</strong> <a href="https://www.paypal.com/paypalme/Depressionist1/4,99" rel="noopener noreferrer" target="_blank">paypal.me/Depressionist1</a></span>
-            <span class="donate"><strong>Ko-fi:</strong> <a href="https://ko-fi.com/U6U31EV2VS" rel="noopener noreferrer" target="_blank">ko-fi.com/rondev</a></span>
-            <span class="donate"><strong>Buymeacoffee:</strong> <a href="https://www.buymeacoffee.com/RonDev" rel="noopener noreferrer" target="_blank">buymeacoffee.com/RonDev</a></span>
-            <span class="donate"><strong>Github:</strong> <a href="https://github.com/sponsors/RonDevHub" rel="noopener noreferrer" target="_blank">github.com/sponsors/RonDevHub</a></span>
-        </div>
-    </div>
-    <div id="infoModal" class="modal">
-        <div class="modal-content">
-            <span class="close" data-close>&times;</span>
-            <h2>Infos</h2>
-            <p>Vielen Dank an <a href="https://dreimetadaten.de" rel="noopener noreferrer" target="_blank">dreimetadaten.de</a> für die Bereitstellung der Metadaten.</p>
-            <p>Diese Seite wird nicht von Europa, Kosmos oder anderen Unternehmen/Personen, die in die Produktion der Serie Die drei ??? eingebunden sind, betrieben.</p>
-            <p>Alle geschützten Marken, Bilder und Texte gehören ihren jeweiligen Besitzern.</p>
-            <p><center><a href="https://commitcloud.net/RonDevHub/RockyBotICE" rel="noopener noreferrer" target="_blank"><img src="https://mini-badges.rondevhub.de/forgejo/RonDevHub/RockyBotICE/release/*/*/de"></a></center></p>
-        </div>
-    </div>
-    <div id="contactModal" class="modal">
-        <div class="modal-content">
-            <span class="close" data-close>&times;</span>
-            <h2>Kontakt</h2>
-            <p>Du möchtest gern mit mir in Kontakt treten, dann hast du die folgenden Möglichkeiten. <i>Zum Schutz vor Email-Lavinen, wird diese durch Mailhide.io geschützt</i></p>
-            <p>
-              E-MAIL: <a href="https://mailhide.io/e/Z77Evb5z" onclick="popup=window.open('https://mailhide.io/de/e/Z77Evb5z','mailhidepopup','width=580,height=635'); return false;">klicken@dannMail</a><br>
-              Martix: <a href="https://matrix.to/#/@rondev:matrix.s3cr.net" rel="noopener noreferrer" target="_blank">@rondev:matrix.s3cr.net</a> <i>Privatchat</i><br>
-              Martix: <a href="https://matrix.to/#/#RockyBotICE:matrix.s3cr.net" rel="noopener noreferrer" target="_blank">#RockyBotICE:matrix.s3cr.net</a> <i>Öffentlicher Chat</i><br>
-              GitHub: <a href="https://github.com/RonDevHub/RockyBotICE/issues" rel="noopener noreferrer" target="_blank">Issues</a>
+            <p class="text-zinc-400 mb-8 leading-relaxed text-sm border-l-2 border-zinc-700 pl-4 italic">
+                "Justus sagt, wir brauchen mehr Kaffee für die Nachtschicht." – Hilf mit, die Serverkosten für den Bot zu decken.
             </p>
+            
+            <div class="grid grid-cols-1 gap-4 font-sans">
+                <a href="https://www.paypal.com/paypalme/Depressionist1/4,99" target="_blank" 
+                   class="flex items-center justify-between p-4 bg-zinc-800 border border-zinc-700 rounded-xl hover:border-[var(--ddf-blue)] transition-all group">
+                    <span class="font-bold text-zinc-200">PayPal</span>
+                    <span class="text-[var(--ddf-blue)] group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+                <a href="https://ko-fi.com/U6U31EV2VS" target="_blank" 
+                   class="flex items-center justify-between p-4 bg-zinc-800 border border-zinc-700 rounded-xl hover:border-[var(--ddf-red)] transition-all group">
+                    <span class="font-bold text-zinc-200">Ko-fi</span>
+                    <span class="text-[var(--ddf-red)] group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+                <a href="https://www.buymeacoffee.com/RonDev" target="_blank" 
+                   class="flex items-center justify-between p-4 bg-zinc-800 border border-zinc-700 rounded-xl hover:border-yellow-500 transition-all group">
+                    <span class="font-bold text-zinc-200">Buy Me A Coffee</span>
+                    <span class="text-yellow-500 group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+                <a href="https://github.com/sponsors/RonDevHub" target="_blank" 
+                   class="flex items-center justify-between p-4 bg-white/5 border border-zinc-700 rounded-xl hover:bg-white/10 transition-all group">
+                    <span class="font-bold text-white">GitHub Sponsors</span>
+                    <span class="text-white group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+            </div>
         </div>
     </div>
+</div>
+
+<div id="infoModal" 
+     x-data="{ open: false }" 
+     x-show="open"
+     x-cloak
+     @open-info-modal.window="open = true" 
+     @keydown.escape.window="open = false"
+     class="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-50 p-4 transition-all duration-300"
+     style="z-index: 9999;">
+
+    <div class="trailer-shell bg-zinc-900 w-full max-w-lg rounded-[2rem] shadow-2xl relative border-2 border-zinc-700 p-0 duration-300"
+         x-show="open"
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 scale-95"
+         x-transition:enter-end="opacity-100 scale-100"
+         x-transition:leave="transition ease-in duration-300"
+         x-transition:leave-start="opacity-100 scale-100"
+         x-transition:leave-end="opacity-0 scale-95"
+         @click.away="open = false">
+
+        <button class="absolute top-6 right-8 text-zinc-500 hover:text-white text-3xl" @click="open = false">&times;</button>
+        
+        <div class="p-8 md:p-10">
+            <div class="bg-zinc-800 px-6 py-2 file-tab inline-block mb-6">
+                <span class="text-[10px] uppercase tracking-widest text-zinc-500 font-sans">Archiv // Information</span>
+            </div>
+            <h2 class="text-2xl font-bold text-white mb-6 uppercase italic tracking-tighter">Datenblatt</h2>
+            <div class="space-y-4 text-zinc-400 text-sm leading-relaxed border-l-2 border-white pl-4">
+                <p>Metadaten-Quelle: <a href="https://dreimetadaten.de" class="text-[var(--ddf-blue)] hover:underline" target="_blank">dreimetadaten.de</a></p>
+                <p class="bg-red-950/30 border border-red-900/50 p-3 italic text-[10px] text-red-200 uppercase tracking-tighter">
+                    Hinweis: Inoffizielles Fan-Projekt. Keine Verbindung zu Kosmos oder Europa.
+                </p>
+                <p>Alle Markenrechte liegen bei den jeweiligen Inhabern.</p>
+                <div class="pt-4 flex justify-center opacity-70 grayscale hover:grayscale-0 transition-all">
+                    <a href="https://commitcloud.net/RonDevHub/RockyBotICE" target="_blank">
+                        <img src="https://mini-badges.rondevhub.de/forgejo/RonDevHub/RockyBotICE/release/*/*/de" alt="Release Badge">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="contactModal" 
+     x-show="contactOpen" 
+     x-cloak
+     class="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-50 p-4 transition-opacity duration-300"
+     style="display: flex;"> <div class="trailer-shell bg-zinc-900 w-full max-w-lg rounded-[2rem] shadow-2xl relative border-2 border-zinc-700"
+         x-show="contactOpen"
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 scale-95"
+         x-transition:enter-end="opacity-100 scale-100"
+         x-transition:leave="transition ease-in duration-300"
+         x-transition:leave-start="opacity-100 scale-100"
+         x-transition:leave-end="opacity-0 scale-95"
+         @click.away="contactOpen = false">
+
+        <button class="absolute top-6 right-8 text-zinc-500 hover:text-white text-3xl" 
+                @click="contactOpen = false">&times;</button>
+        
+        <div class="p-8 md:p-10 text-center">
+            <h2 class="text-2xl font-bold text-white mb-2 uppercase italic tracking-tighter text-left">Funkkontakt</h2>
+            <p class="text-[10px] text-zinc-600 uppercase tracking-widest mb-8 text-left font-sans">Einsatzzentrale Rocky Beach</p>
+            
+            <div class="space-y-3 font-sans">
+                <a href="https://mail-shield.net/313300b5" 
+                   onclick="popup=window.open('https://mail-shield.net/313300b5','mailhidepopup','width=580,height=635'); return false;"
+                   class="block w-full py-4 bg-zinc-800 border-b-2 border-zinc-700 rounded-xl hover:bg-zinc-700 transition font-bold text-zinc-200">
+                   📧 E-Mail Nachricht
+                </a>
+                <a href="https://matrix.to/#/@rondev:matrix.s3cr.net" target="_blank"
+                   class="block w-full py-4 bg-zinc-800 border-b-2 border-zinc-700 rounded-xl hover:bg-zinc-700 transition font-bold text-emerald-500 text-sm">
+                   💬 Matrix (Direkt)
+                </a>
+                <a href="https://matrix.to/#/#RockyBotICE:matrix.s3cr.net" target="_blank"
+                   class="block w-full py-4 bg-zinc-800 border-b-2 border-zinc-700 rounded-xl hover:bg-zinc-700 transition font-bold text-emerald-500 text-sm">
+                   👥 Matrix (Projekt)
+                </a>
+                <a href="https://github.com/RonDevHub/RockyBotICE/issues" target="_blank"
+                   class="block w-full py-4 bg-zinc-950 border border-zinc-800 rounded-xl hover:border-white transition font-bold text-zinc-500 text-xs uppercase tracking-widest">
+                   🛠 Fehlerbericht (GitHub)
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

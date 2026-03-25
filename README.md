@@ -1,79 +1,49 @@
-# RockyBotICE - Der drei ![Fragezeichen-Logo](https://sig.rondev.de/logos/dreifragezeichen.svg) Bot
-<div align="center">
-
-![Created](https://mini-badges.rondevhub.de/forgejo/RonDevHub/RockyBotICE/created-at/*/*/de) ![GitHub Repo stars](https://mini-badges.rondevhub.de/forgejo/RonDevHub/RockyBotICE/lastcommit/*/*/de) ![GitHub Repo stars](https://mini-badges.rondevhub.de/github/RonDevHub/RockyBotICE/stars/*/*/de) ![GitHub Repo stars](https://mini-badges.rondevhub.de/github/RonDevHub/RockyBotICE/issues/*/*/de) ![GitHub Repo language](https://mini-badges.rondevhub.de/forgejo/RonDevHub/RockyBotICE/language/*/*/de) ![GitHub Repo license](https://mini-badges.rondevhub.de/github/RonDevHub/RockyBotICE/license/*/*/de) ![GitHub Repo release](https://mini-badges.rondevhub.de/github/RonDevHub/RockyBotICE/release/*/*/de) ![GitHub Repo release](https://mini-badges.rondevhub.de/github/RonDevHub/RockyBotICE/forks/*/*/de) ![GitHub Repo downlods](https://mini-badges.rondevhub.de/github/RonDevHub/RockyBotICE/downloads/*/*/de) ![GitHub Repo stars](https://mini-badges.rondevhub.de/github/RonDevHub/RockyBotICE/watchers)
-
-[![Buy me a coffee](https://mini-badges.rondevhub.de/icon/cuptogo/Buy_me_a_Coffee-c1d82f-222/social "Buy me a coffee")](https://www.buymeacoffee.com/RonDev)
-[![Buy me a coffee](https://mini-badges.rondevhub.de/icon/cuptogo/ko--fi.com-c1d82f-222/social "Buy me a coffee")](https://ko-fi.com/U6U31EV2VS)
-[![Sponsor me](https://mini-badges.rondevhub.de/icon/hearts-red/Sponsor_me/social "Sponsor me")](https://github.com/sponsors/RonDevHub)
-[![Pizza Power](https://mini-badges.rondevhub.de/icon/pizzaslice/Buy_me_a_pizza/social "Pizza Power")](https://www.paypal.com/paypalme/Depressionist1/4,99)
-</div>
-
----
-> „Die drei ??? übernehmen jeden Fall – und RockyBotICE übernimmt die tägliche Empfehlung.“
----
-🎙️ Ein liebevoll gebauter Mastodon-Bot, der täglich eine zufällige Folge der drei ??? auf <a rel="me" href="https://mastodon.social/@RockyBotICE">@RockyBotICE</a> postet – inklusive Cover, Titel, Anbieter-Links und einem passenden Text von Justus, Peter oder Bob.
+<h1 align="center">
+ 🔍 RockyBotICE – Die digitale Zentrale
+</h1>
+<p align="center">
+  <img src="public/favicon.png" width="120" alt="RockyBot Logo">
+  <br>
+  <b>»Erster Detektiv: Justus Jonas. Zweiter Detektiv: Peter Shaw. Recherchen und Archiv: Bob Andrews.«</b>
+</p>
 
 ---
 
-## 🔍 Was macht RockyBotICE?
+## 📂 Aktennotiz: Projektübersicht
+**RockyBotICE** ist ein automatisierter Ermittlungs-Assistent (Bot) für das Fediverse (Mastodon). Seine Aufgabe ist die tägliche Analyse und Empfehlung von Fällen der legendären Hörspielserie *Die drei ???*. Dieses Repository enthält das Frontend der "Zentrale", über die Ermittler auf Fallakten und Metadaten zugreifen können.
 
-- Wählt täglich eine zufällige Folge aus allen regulären, Spezial- und Kurzgeschichten
-- Vermeidet Wiederholungen (mindestens 100 Tage Abstand)
-- Postet einen Toot mit Cover, Titel, Anbieter-Links und einem passenden Text von Justus, Peter oder Bob
-- Erstellt eine Zusatzseite mit Informationen und allen Streaming-Anbietern zur Folge (`folge123`)
-
----
-
-## 🛠️ Wie funktioniert das?
-
-RockyBotICE basiert auf PHP und nutzt die JSON-Daten von [dreimetadaten.de](https://dreimetadaten.de). Die Architektur ist modular aufgebaut:
-```
-RockyBotICE/ 
-├── config/ # Konfiguration inkl. API-Token und Testmodus
-├── data/ # JSON-Daten, Logs, Debug-Ausgaben 
-├── templates/ # Textbausteine mit Platzhaltern 
-├── src/ # Bot-Logik, API-Anbindung, Helferklassen 
-├── public/ # Weboberfläche (index.php, folge.php) 
-├── cron.php # Einstiegspunkt für den Botlauf 
-└── README.md # Diese Datei
-```
+### 🛠 System-Spezifikationen
+* **Status:** Aktiv (Ermittlung läuft)
+* **Technologie:** PHP 8.x, Alpine.js, Tailwind CSS (Zentrale-Design)
+* **Datenquelle:** [dreimetadaten.de](https://dreimetadaten.de)
+* **Lizenz:** CC-BY-4.0 license (Zugriff für befugte Detektive gestattet)
 
 ---
 
-## 🧪 Features
-
-- ✅ Testmodus für sichere Entwicklung
-- 🐞 Debug-Log für Fehleranalyse
-- 🧩 Platzhaltertexte für individuelle Toots
-- 🔐 Cronjob-Schutz via Secret-Token
-- 🧵 Erweiterbar mit eigenen Texten, Regeln, Linkseiten oder Statistiken
+## 📋 Protokoll & Features
+* **Digitale Fallakte:** Detaillierte Ansicht jeder Folge inklusive Inhaltsanalyse und Beweisfoto (Cover).
+* **Funk-Schnittstellen:** Direkte Anbindung an Spotify, Apple Music, Deezer & Co.
+* **Archiv-Log:** Automatische Erfassung der zuletzt empfohlenen Fälle (`log.json`).
+* **Responsives Design:** Optimiert für mobiles Equipment und Desktop-Rechner in der Zentrale.
 
 ---
 
-## 📦 Installation
-
-1. Repository klonen
-2. `config/config.php` anpassen (Token, Secret, Testmodus)
-3. JSON-Dateien in `data/` ablegen oder regelmäßig aktualisieren
-4. Cronjob einrichten:
-   ```bash
-   curl "https://deinserver.de/dreibot/cron.php?secret=DEIN_SECRET"
-   ```
+## 🗂️ Quellcode-Archiv & Mirror
+Befugte Ermittler können den Code an folgenden Standorten einsehen:
+* **GitHub:** [github.com/RonDevHub/RockyBotICE](https://github.com/RonDevHub/RockyBotICE)
+* **Codeberg:** [codeberg.org/RonDevHub/RockyBotICE](https://codeberg.org/RonDevHub/RockyBotICE)
 
 ---
 
-## 💡 Credits
-- Metadaten: [dreimetadaten.de](https://dreimetadaten.de)
-- Idee & Umsetzung:
-   - [RonDevHub](https://commitcloud.net/RonDevHub)
+## ☕ Unterstützung erbeten
+Die Instandhaltung der Zentrale erfordert viel schwarzen Kaffee. Wenn dir die Ermittlungsarbeit gefällt, kannst du den Haupt-Ermittler hier unterstützen:
+
+[![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/paypalme/Depressionist1/4,99)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/U6U31EV2VS) [![Ko-fi](https://img.shields.io/badge/buy--me--a--coffee-f48924?style=for-the-badge&logo=buymeacoffee&logoColor=white)](https://buymeacoffee.com/rondev)
 
 ---
 
-## Verwendung
-Bei Verwendung genügt als Namensnennung "RockyBotICE".
-
-Sämtlicher Quellcode steht unter der [MIT License](https://opensource.org/license/MIT).
-
-## 📣 Kontakt
-Fragen, Ideen oder Nerdliebe? Melde dich auf [**Matrix Chat**](https://matrix.to/#/#RockyBotICE:matrix.s3cr.net), [**Github Issues**](https://github.com/RonDevHub/RockyBotICE/issues), <a href="https://mastodon.social/@herrstoeckchen">**@herrstoeckchen**</a>, <a rel="me" href="https://mastodon.social/@RockyBotICE">**@RockyBotICE**</a> *(kein Support)*
+<p align="center">
+  <i>Inoffizielles Fan-Projekt. "Die drei ???" ist eine Marke der Franckh-Kosmos Verlags-GmbH & Co. KG.</i><br>
+  <b>Entwickelt von <a href="https://rondev.de">RonDev</a></b>
+</p>
