@@ -14,7 +14,7 @@
 
 ### 🛠 System-Spezifikationen
 * **Status:** Aktiv (Ermittlung läuft)
-* **Technologie:** PHP 8.x, Tailwind CSS (Zentrale-Design)
+* **Technologie:** PHP 8.x, Alpine.js, Tailwind CSS (Zentrale-Design)
 * **Datenquelle:** [dreimetadaten.de](https://dreimetadaten.de)
 * **Lizenz:** CC-BY-4.0 license (Zugriff für befugte Detektive gestattet)
 
