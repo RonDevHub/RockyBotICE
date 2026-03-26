@@ -51,7 +51,7 @@ $href = $currentCaseId ? "/folge" . $currentCaseId : "#";
 
     <header class="pt-12 px-8 md:px-16 pb-8 border-b border-zinc-800">
       <div class="inline-block bg-zinc-800 px-8 py-2 file-tab mb-4">
-        <span class="text-[10px] uppercase tracking-[0.3em] text-zinc-500 font-sans">Streng Geheim // Fallakte: <?php echo date('Y'); ?></span>
+        <span class="text-[10px] uppercase tracking-[0.3em] text-zinc-400 font-sans">Streng Geheim // Fallakte: <?php echo date('Y'); ?></span>
       </div>
 
       <h1 class="text-4xl md:text-7xl font-black italic uppercase tracking-tighter">
@@ -90,7 +90,7 @@ $href = $currentCaseId ? "/folge" . $currentCaseId : "#";
 
         <section class="mt-8">
           <div class="inline-block bg-zinc-800 px-6 py-1 file-tab mb-4">
-            <span class="text-[10px] uppercase tracking-widest text-zinc-500 font-sans">System // Repository</span>
+            <span class="text-[10px] uppercase tracking-widest text-zinc-400 font-sans">System // Repository</span>
           </div>
 
           <h2 class="text-xl font-bold border-b border-zinc-700 pb-2 mb-4 text-zinc-300">
@@ -104,7 +104,7 @@ $href = $currentCaseId ? "/folge" . $currentCaseId : "#";
                 <span class="text-xl grayscale group-hover:grayscale-0 transition">🐙</span>
                 <span class="text-xs font-bold uppercase tracking-wider">GitHub</span>
               </div>
-              <span class="text-[10px] text-zinc-600 font-mono group-hover:text-white">src/main</span>
+              <span class="text-[10px] text-zinc-500 font-mono group-hover:text-white">src/main</span>
             </a>
 
             <a href="https://codeberg.org/RonDevHub/RockyBotICE" target="_blank"
@@ -113,11 +113,11 @@ $href = $currentCaseId ? "/folge" . $currentCaseId : "#";
                 <span class="text-xl grayscale group-hover:grayscale-0 transition">🏔️</span>
                 <span class="text-xs font-bold uppercase tracking-wider">Codeberg</span>
               </div>
-              <span class="text-[10px] text-zinc-600 font-mono group-hover:text-blue-400">mirror/git</span>
+              <span class="text-[10px] text-zinc-500 font-mono group-hover:text-blue-400">mirror/git</span>
             </a>
           </div>
 
-          <p class="mt-4 text-[10px] text-zinc-600 italic font-mono leading-tight">
+          <p class="mt-4 text-[10px] text-zinc-400 italic font-mono leading-tight">
             Hinweis: Der Code ist Open-Source unter der CC-BY-4.0 license archiviert. Zugriff für befugte Ermittler gestattet.
           </p>
         </section>
@@ -126,7 +126,7 @@ $href = $currentCaseId ? "/folge" . $currentCaseId : "#";
 
       <aside class="w-full md:w-72 bg-black/30 p-8 flex flex-col justify-between">
         <div class="space-y-6">
-          <h3 class="text-xs font-sans font-bold uppercase tracking-widest text-zinc-600">Schaltkonsole</h3>
+          <h3 class="text-xs font-sans font-bold uppercase tracking-widest text-zinc-400">Schaltkonsole</h3>
 
           <div class="space-y-4">
             <a href="https://mastodon.social/@RockyBotICE"
@@ -189,13 +189,13 @@ $href = $currentCaseId ? "/folge" . $currentCaseId : "#";
                 <span class="border-2 border-zinc-500 px-2 py-1 text-xl font-black uppercase text-zinc-500">Archiviert</span>
               </span>
 
-              <span class="relative z-30">Archiv-Infos</span>
+              <span class="relative z-30 text-xs font-bold uppercase text-white tracking-widest">Archiv-Infos</span>
             </button>
 
           </div>
         </div>
 
-        <div class="mt-12 pt-6 border-t border-zinc-800 text-[10px] text-zinc-600 uppercase leading-loose">
+        <div class="mt-12 pt-6 border-t border-zinc-800 text-[10px] text-zinc-400 uppercase leading-loose">
           Standort: Rocky Beach<br>
           1. Detektiv: Justus Jonas<br>
           2. Detektiv: Peter Shaw<br>
@@ -206,7 +206,7 @@ $href = $currentCaseId ? "/folge" . $currentCaseId : "#";
 
     <footer class="bg-black/40 p-4 flex flex-col items-center gap-4">
       <div class="flex items-center justify-center gap-2">
-        <span class="text-[10px] text-zinc-600 uppercase tracking-[0.1em]">
+        <span class="text-[10px] text-zinc-400 uppercase tracking-[0.1em]">
             Made with ❤️ and ☕️ - powered by 
             <a href="https://rondev.de" target="_blank" class="animate-ddf font-black">RonDev</a>
         </span>
@@ -214,10 +214,13 @@ $href = $currentCaseId ? "/folge" . $currentCaseId : "#";
 
       <div class="w-full flex items-center justify-center gap-4">
         <div class="h-[1px] flex-1 bg-zinc-800"></div>
-        <span class="text-[10px] text-zinc-600 uppercase tracking-[0.5em] whitespace-nowrap">Ende der Akte</span>
+        <span class="text-[10px] text-zinc-400 uppercase tracking-[0.5em] whitespace-nowrap">Ende der Akte</span>
         <div class="h-[1px] flex-1 bg-zinc-800"></div>
       </div>
     </footer>
   </main>
+
+  
 </body>
+
 </html>
