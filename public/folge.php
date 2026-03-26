@@ -113,13 +113,13 @@ $platforms = [
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
           <div class="inline-block bg-zinc-800 px-8 py-2 file-tab mb-4">
-            <span class="text-[10px] uppercase tracking-[0.3em] text-zinc-500 font-sans">Beweismittel // Fall-ID: <?php echo $id; ?></span>
+            <span class="text-[10px] uppercase tracking-[0.3em] text-zinc-400 font-sans">Beweismittel // Fall-ID: <?php echo $id; ?></span>
           </div>
           <h1 class="text-3xl md:text-5xl font-black italic uppercase tracking-tighter">
             <?php echo htmlspecialchars($folge['titel']); ?>
           </h1>
         </div>
-        <a href="/" class="text-zinc-500 hover:text-white transition-colors text-xs uppercase tracking-widest border border-zinc-700 px-4 py-2 rounded hover:bg-zinc-800 mb-2 md:mb-0 text-center">
+        <a href="/" class="text-zinc-300 hover:text-white transition-colors text-xs uppercase tracking-widest border border-zinc-700 px-4 py-2 rounded hover:bg-zinc-800 mb-2 md:mb-0 text-center">
           ← Zurück zur Zentrale
         </a>
       </div>
@@ -145,20 +145,20 @@ $platforms = [
           src="<?php echo htmlspecialchars($cover); ?>"
           alt="Cover"
           fetchpriority="high" class="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-opacity duration-500"> </div>
-      <p class="mt-4 text-[10px] text-zinc-600 text-center uppercase tracking-widest font-sans">Abb. 1: Tonträger-Umschlag</p>
+      <p class="mt-4 text-[10px] text-zinc-400 text-center uppercase tracking-widest font-sans">Abb. 1: Tonträger-Umschlag</p>
       </div>
 
         <div class="w-full space-y-6">
           <div>
-            <h3 class="text-[10px] text-zinc-600 uppercase tracking-widest mb-2 font-sans font-bold">Klassifizierung</h3>
+            <h3 class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2 font-sans font-bold">Klassifizierung</h3>
             <p class="text-sm border-l-2 border-[var(--ddf-blue)] pl-3 text-zinc-300"><?php echo $typ; ?></p>
           </div>
           <div>
-            <h3 class="text-[10px] text-zinc-600 uppercase tracking-widest mb-2 font-sans font-bold">Veröffentlichung</h3>
+            <h3 class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2 font-sans font-bold">Veröffentlichung</h3>
             <p class="text-sm border-l-2 border-[var(--ddf-red)] pl-3 text-zinc-300"><?php echo date('d.m.Y', strtotime($datum)); ?></p>
           </div>
           <div>
-            <h3 class="text-[10px] text-zinc-600 uppercase tracking-widest mb-2 font-sans font-bold">Aktenseiten / Falldauer</h3>
+            <h3 class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2 font-sans font-bold">Aktenseiten / Falldauer</h3>
             <p class="text-sm border-l-2 border-white pl-3 text-zinc-300"><?php echo count($folge['kapitel'] ?? []); ?> Kapitel<br><?php echo $stunden . " Std " . $minuten . " Min"; ?></p>
           </div>
         </div>
@@ -233,12 +233,12 @@ $platforms = [
 
     </div>
 </section>
-        <footer class="pt-10 border-t border-zinc-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] text-zinc-600 uppercase tracking-widest">
+        <footer class="pt-10 border-t border-zinc-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] text-zinc-400 uppercase tracking-widest">
           <div>
             Ermittler: <a href="https://rondev.de" target="_blank" class="animate-ddf font-bold transition-all">RonDev</a>
           </div>
           <div class="flex gap-6">
-            <button @click="$dispatch('open-info-modal')" class="hover:text-white transition-colors underline decoration-zinc-800 underline-offset-4">Metadaten-Quelle</button>
+            <button @click="$dispatch('open-info-modal')" class="hover:text-white text-zinc-400 transition-colors underline decoration-zinc-800 underline-offset-4">Metadaten-Quelle</button>
             <span>Stand: <?php echo date('d.m.Y'); ?></span>
           </div>
         </footer>
