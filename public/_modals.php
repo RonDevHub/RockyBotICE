@@ -13,7 +13,7 @@
          @click.away="donateOpen = false">
         
         <div class="bg-zinc-800 px-6 py-2 file-tab inline-block mt-6 ml-6">
-            <span class="text-[10px] uppercase tracking-widest text-zinc-500 font-sans">Kaffeekasse // Beweismittel</span>
+            <span class="text-[10px] uppercase tracking-widest text-zinc-400 font-sans">Kaffeekasse // Beweismittel</span>
         </div>
 
         <button class="absolute top-6 right-8 text-zinc-500 hover:text-white transition-colors text-3xl" 
@@ -76,12 +76,12 @@
         
         <div class="p-8 md:p-10">
             <div class="bg-zinc-800 px-6 py-2 file-tab inline-block mb-6">
-                <span class="text-[10px] uppercase tracking-widest text-zinc-500 font-sans">Archiv // Information</span>
+                <span class="text-[10px] uppercase tracking-widest text-zinc-400 font-sans">Archiv // Information</span>
             </div>
             <h2 class="text-2xl font-bold text-white mb-6 uppercase italic tracking-tighter">Datenblatt</h2>
             <div class="space-y-4 text-zinc-400 text-sm leading-relaxed border-l-2 border-white pl-4">
                 <p>Metadaten-Quelle: <a href="https://dreimetadaten.de" class="text-[var(--ddf-blue)] hover:underline" target="_blank">dreimetadaten.de</a></p>
-                <p class="bg-red-950/30 border border-red-900/50 p-3 italic text-[10px] text-red-200 uppercase tracking-tighter">
+                <p class="bg-red-950/30 border border-red-900/50 p-3 italic text-[11px] text-red-200 uppercase tracking-tighter">
                     Hinweis: Inoffizielles Fan-Projekt. Keine Verbindung zu Kosmos oder Europa.
                 </p>
                 <p>Alle Markenrechte liegen bei den jeweiligen Inhabern.</p>
@@ -114,11 +114,11 @@
         
         <div class="p-8 md:p-10 text-center">
             <h2 class="text-2xl font-bold text-white mb-2 uppercase italic tracking-tighter text-left">Funkkontakt</h2>
-            <p class="text-[10px] text-zinc-600 uppercase tracking-widest mb-8 text-left font-sans">Einsatzzentrale Rocky Beach</p>
+            <p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-8 text-left font-sans">Einsatzzentrale Rocky Beach</p>
             
             <div class="space-y-3 font-sans">
                 <a href="https://mail-shield.net/313300b5" 
-                   onclick="popup=window.open('https://mail-shield.net/313300b5','mailhidepopup','width=580,height=635'); return false;"
+                   onclick="popup=window.open('https://mail-shield.net/313300b5','mailshieldpopup','width=580,height=635'); return false;"
                    class="block w-full py-4 bg-zinc-800 border-b-2 border-zinc-700 rounded-xl hover:bg-zinc-700 transition font-bold text-zinc-200">
                    📧 E-Mail Nachricht
                 </a>
