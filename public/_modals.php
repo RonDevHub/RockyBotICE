@@ -114,9 +114,12 @@
         
         <div class="p-8 md:p-10 text-center">
             <h2 class="text-2xl font-bold text-white mb-2 uppercase italic tracking-tighter text-left">Funkkontakt</h2>
-            <p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-8 text-left font-sans">Einsatzzentrale Rocky Beach</p>
+            <p class="text-[11px] text-zinc-500 uppercase tracking-widest mb-8 text-left font-sans">Einsatzzentrale Rocky Beach</p>
             
             <div class="space-y-3 font-sans">
+                <p class="bg-blue-950/30 border border-blue-900/50 p-3 text-[12px] text-blue-300">
+                    <b>Hinweis:</b> Durch <a href="https://mail-shield.net" target="_blank" class="font-bold no-underline hover:underline">MailShield</a> gesützt vor E-Mail-Lavinen
+                </p>
                 <a href="https://mail-shield.net/313300b5" 
                    onclick="popup=window.open('https://mail-shield.net/313300b5','mailshieldpopup','width=580,height=635'); return false;"
                    class="block w-full py-4 bg-zinc-800 border-b-2 border-zinc-700 rounded-xl hover:bg-zinc-700 transition font-bold text-zinc-200">
