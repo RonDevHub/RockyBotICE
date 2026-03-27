@@ -1,0 +1,85 @@
+/* --- ZENTRALE VARIABLEN & BASICS --- */
+:root {
+  --ddf-red: #e2001a;
+  --ddf-blue: #009ee0;
+  --bg-dark: #050505;
+  --text-light: #f8fafc;
+}
+
+/* Verhindert Flackern bei Alpine.js */
+[x-cloak] {
+  display: none !important;
+}
+
+/* --- GLOBALER LOOK (DETEKTIV-AKTE) --- */
+ body {
+  background-color: var(--bg-dark);
+  /* Neuer Geheimer '???'-Hintergrund in DDF-Farben, subtil & chaotisch */
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%20viewBox='0%200%20400%20400'%3E%3Cstyle%3Etext%20%7B%20font-family:%20'Arial',%20sans-serif;%20font-weight:%20bold;%20%7D%3C/style%3E%3C!--%20Justus%20(Weisz)%20-%20Gross,%20oben%20links%20--%3E%3Ctext%20x='60'%20y='90'%20font-size='70'%20fill='rgba(255,255,255,0.1)'%3E?%3C/text%3E%3C!--%20Peter%20(Rot)%20-%20Mittel,%20mitte%20rechts%20--%3E%3Ctext%20x='310'%20y='180'%20font-size='50'%20fill='rgba(226,0,26,0.2)'%20transform='rotate(15%20310%20180)'%3E?%3C/text%3E%3C!--%20Bob%20(Blau)%20-%20Klein,%20unten%20links%20--%3E%3Ctext%20x='120'%20y='340'%20font-size='30'%20fill='rgba(0,158,224,0.2)'%20transform='rotate(-10%20120%20340)'%3E?%3C/text%3E%3C!--%20Justus%20(Weisz)%20-%20Mittel-Klein,%20Mitte%20--%3E%3Ctext%20x='200'%20y='140'%20font-size='40'%20fill='rgba(255,255,255,0.1)'%3E?%3C/text%3E%3C!--%20Peter%20(Rot)%20-%20Klein,%20oben%20rechts%20--%3E%3Ctext%20x='360'%20y='50'%20font-size='20'%20fill='rgba(226,0,26,0.2)'%3E?%3C/text%3E%3C!--%20Bob%20(Blau)%20-%20Gross,%20unten%20rechts%20--%3E%3Ctext%20x='280'%20y='370'%20font-size='60'%20fill='rgba(0,158,224,0.2)'%20transform='rotate(5%20280%20370)'%3E?%3C/text%3E%3C/svg%3E");
+  color: var(--text-light);
+  font-family: "Courier New", Courier, monospace; /* Schreibmaschinen-Vibe */
+}
+
+/* --- KOMPONENTEN --- */
+
+/* Zentrale/Wohnwagen-Gehäuse Effekt */
+.trailer-shell {
+  background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+  border: 2px solid #333;
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.1),
+    0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Akten-Reiter (Folder Tabs) */
+.file-tab {
+  clip-path: polygon(0% 0%, 85% 0%, 100% 100%, 0% 100%);
+}
+
+/* Beweisfoto Klebestreifen (Polaroid-Look) */
+.photo-tape {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* --- ANIMATIONEN --- */
+
+/* RonDev Farbverlauf (DDF-Farben) */
+@keyframes ddf-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-ddf {
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    var(--ddf-red),
+    var(--ddf-blue),
+    #ffffff
+  );
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: ddf-flow 4s ease infinite;
+}
+
+/* Skeleton/Pulsieren Animation */
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
