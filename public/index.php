@@ -33,7 +33,7 @@ $href = $currentCaseId ? "/folge" . $currentCaseId : "#";
   <link rel="icon" type="image/png" href="/public/favicon.png"><meta name="description" content="Die drei ??? übernehmen jeden Fall – und RockyBotICE übernimmt die tägliche Empfehlung.">
   <meta name="keywords" content="drei ???, mastodon, mastodon bot, bot, die drei fragezeichen">
   <link rel="canonical" href="https://rockybotice.rondev.de/">
-  <link rel="icon" type="image/png" href="/public/favicon.png">
+  <link rel="icon" type="image/png" href="/public/img/logo.png">
   <link rel="stylesheet" href="/public/assets/style-v.2.1.css">
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
