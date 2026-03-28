@@ -2,7 +2,7 @@
  🔍 RockyBotICE – Die digitale Zentrale
 </h1>
 <p align="center">
-  <img src="public/favicon.png" width="120" alt="RockyBot Logo">
+  <img src="public/img/logo.png" width="120" alt="RockyBot Logo">
   <br>
   <b>»Erster Detektiv: Justus Jonas. Zweiter Detektiv: Peter Shaw. Recherchen und Archiv: Bob Andrews.«</b>
 </p>
