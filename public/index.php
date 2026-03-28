@@ -29,7 +29,7 @@ $href = $currentCaseId ? "/folge" . $currentCaseId : "#";
   <meta charset="UTF-8">
   <title><?php echo htmlspecialchars($config['botname']); ?> - Zentrale Rocky Beach</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link rel="icon" type="image/png" href="/public/favicon.png"><meta name="description" content="Die drei ??? übernehmen jeden Fall – und RockyBotICE übernimmt die tägliche Empfehlung.">
   <meta name="keywords" content="drei ???, mastodon, mastodon bot, bot, die drei fragezeichen">
   <link rel="canonical" href="https://rockybotice.rondev.de/">
