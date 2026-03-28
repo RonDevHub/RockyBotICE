@@ -8,6 +8,7 @@ return [
     'botname' => 'RockyBot21',
     'base_url' => 'https://deinedomain.de/',
     'hashtags' => ['#Hashtag1', '#Hashtag2'], // oder [], für keine Hashtags
+    'cron_time' => '19', // Uhrzeit für den Cronjob
     // Dynamische Hashtags - true: anzeigen, false: nicht anzeigen
     'dynamic_hashtags' => [ 
         'typ' => true, 
