@@ -74,7 +74,7 @@ $href = $currentCaseId ? "/folge" . $currentCaseId : "#";
           </div>
           <h2 class="text-xl font-bold border-b border-zinc-700 pb-2 mb-4 text-zinc-300">🔍 Sachverhalt</h2>
           <p class="text-zinc-400 leading-relaxed">
-            Der Bot <?php echo htmlspecialchars($config['botname']); ?> ermittelt täglich in der Hörspiel-Datenbank.
+            Der Bot <?php echo htmlspecialchars($config['botname']); ?> ermittelt täglich <?php echo htmlspecialchars($config['cron_time']); ?> Uhr in der Hörspiel-Datenbank.
             Ergebnisse werden unmittelbar via Mastodon-Funkspruch an die Öffentlichkeit weitergegeben.
           </p>
         </section>
@@ -82,9 +82,9 @@ $href = $currentCaseId ? "/folge" . $currentCaseId : "#";
         <section>
           <h2 class="text-xl font-bold border-b border-zinc-700 pb-2 mb-4 text-zinc-300">📋 Protokoll</h2>
           <ul class="space-y-3 text-sm text-zinc-400">
-            <li class="flex items-start gap-3"><span class="text-[var(--ddf-red)]">■</span> 150 Tage Sperrfrist für Wiederholungen.</li>
-            <li class="flex items-start gap-3"><span class="text-[var(--ddf-blue)]">■</span> Vollständige Metadaten-Analyse (<a href="https://dreimetadaten.de" target="_blank" class="text-zinc-300 hover:text-[var(--ddf-blue)] underline decoration-zinc-700 hover:decoration-[var(--ddf-blue)] transition-all duration-300">dreimetadaten.de</a>).</li>
-            <li class="flex items-start gap-3"><span class="text-white">■</span> Inklusive volständige Fallakte (Cover-Art).</li>
+            <li class="flex items-start gap-3"><span class="text-white">■</span> <?php echo htmlspecialchars($config['log_days']); ?> Tage Sperrfrist für Wiederholungen.</li>
+            <li class="flex items-start gap-3"><span class="text-[var(--ddf-red)]">■</span> Vollständige Metadaten-Analyse (<a href="https://dreimetadaten.de" target="_blank" class="text-zinc-300 hover:text-[var(--ddf-blue)] underline decoration-zinc-700 hover:decoration-[var(--ddf-blue)] transition-all duration-300">dreimetadaten.de</a>).</li>
+            <li class="flex items-start gap-3"><span class="text-[var(--ddf-blue)]">■</span> Inklusive volständige Fallakte (Cover-Art).</li>
           </ul>
         </section>
 
