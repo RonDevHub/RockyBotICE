@@ -38,7 +38,7 @@ Befugte Ermittler können den Code an folgenden Standorten einsehen:
 ## ☕ Unterstützung erbeten
 Die Instandhaltung der Zentrale erfordert viel schwarzen Kaffee. Wenn dir die Ermittlungsarbeit gefällt, kannst du den Haupt-Ermittler hier unterstützen:
 
-[![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/paypalme/Depressionist1/4,99)
+[![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/donate/?hosted_button_id=PWY939TPCQ3RA)
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/U6U31EV2VS) [![Ko-fi](https://img.shields.io/badge/buy--me--a--coffee-f48924?style=for-the-badge&logo=buymeacoffee&logoColor=white)](https://buymeacoffee.com/rondev)
 
 ---
