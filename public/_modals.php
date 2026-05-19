@@ -28,7 +28,7 @@
             </p>
             
             <div class="grid grid-cols-1 gap-4 font-sans">
-                <a href="https://www.paypal.com/paypalme/Depressionist1/4,99" target="_blank" 
+                <a href="https://www.paypal.com/donate/?hosted_button_id=PWY939TPCQ3RA" target="_blank" 
                    class="flex items-center justify-between p-4 bg-zinc-800 border border-zinc-700 rounded-xl hover:border-[var(--ddf-blue)] transition-all group">
                     <span class="font-bold text-zinc-200">PayPal</span>
                     <span class="text-[var(--ddf-blue)] group-hover:translate-x-1 transition-transform">→</span>
