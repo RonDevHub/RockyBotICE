@@ -43,11 +43,11 @@
                     <span class="font-bold text-zinc-200">Buy Me A Coffee</span>
                     <span class="text-yellow-500 group-hover:translate-x-1 transition-transform">→</span>
                 </a>
-                <a href="https://github.com/sponsors/RonDevHub" target="_blank" 
+                <!--<a href="https://github.com/sponsors/RonDevHub" target="_blank" 
                    class="flex items-center justify-between p-4 bg-white/5 border border-zinc-700 rounded-xl hover:bg-white/10 transition-all group">
                     <span class="font-bold text-white">GitHub Sponsors</span>
                     <span class="text-white group-hover:translate-x-1 transition-transform">→</span>
-                </a>
+                </a>-->
             </div>
         </div>
     </div>
@@ -87,7 +87,7 @@
                 <p>Alle Markenrechte liegen bei den jeweiligen Inhabern.</p>
                 <div class="pt-4 flex justify-center opacity-70 grayscale hover:grayscale-0 transition-all">
                     <a href="https://commitcloud.net/RonDevHub/RockyBotICE" target="_blank">
-                        <img src="https://mini-badges.rondevhub.de/forgejo/RonDevHub/RockyBotICE/release/*/*/de" alt="Release Badge">
+                        <img src="https://mini-badges.rondev.de/forgejo/RonDevHub/RockyBotICE/release/*/*/de" alt="Release Badge">
                     </a>
                 </div>
             </div>
